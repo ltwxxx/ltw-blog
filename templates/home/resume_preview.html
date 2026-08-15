@@ -17,7 +17,25 @@
                     <i class="fa-solid fa-graduation-cap text-3xl"></i>
                 </div>
                 <h3 class="text-lg font-semibold mb-3 text-docker-dark" data-i18n-key="sections.resume.education">教育背景</h3>
-                <p class="text-docker-gray text-base leading-relaxed" data-i18n-key="sections.resume.education_content">{{ education }}</p>
+                <div class="space-y-5">
+                    {% for item in education %}
+                    <div class="relative flex gap-3">
+                        <div class="flex flex-col items-center pt-1.5" aria-hidden="true">
+                            <span class="h-2.5 w-2.5 shrink-0 rounded-full bg-docker-blue ring-4 ring-blue-50"></span>
+                            {% if not loop.last %}
+                            <span class="mt-2 h-full w-px bg-blue-100"></span>
+                            {% endif %}
+                        </div>
+                        <div class="min-w-0 flex-1 {% if not loop.last %}pb-1{% endif %}">
+                            <div class="flex flex-wrap items-start justify-between gap-x-3 gap-y-1">
+                                <h4 class="font-semibold leading-snug text-docker-dark" data-i18n-key="sections.resume.education_{{ loop.index }}_school">{{ item.school }}</h4>
+                                <span class="shrink-0 rounded-full bg-blue-50 px-2.5 py-1 text-xs font-semibold tracking-wide text-docker-blue" data-i18n-key="sections.resume.education_{{ loop.index }}_period">{{ item.period }}</span>
+                            </div>
+                            <p class="mt-1 text-sm leading-relaxed text-docker-gray" data-i18n-key="sections.resume.education_{{ loop.index }}_program">{{ item.program }}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
             </div>
 
             <!-- 技术栈 -->
