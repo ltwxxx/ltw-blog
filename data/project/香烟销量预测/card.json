@@ -1,0 +1,10 @@
+{
+    "id": "cigarette-sales-prediction",
+    "title": "香烟销量和销售额预测基于多模型集成学习方法",
+    "summary": "基于ARIMA、Prophet、LSTM、XGBoost多模型集成学习的销售预测项目，使用线性回归作为元学习器，显著提升预测精度。获钉钉杯数模比赛三等奖。",
+    "technologies": ["Python", "ARIMA", "LSTM", "Prophet", "XGBoost", "集成学习", "时间序列预测", "机器学习", "数据处理"],
+    "image": "zmd.jpg",
+    "status": "completed",
+    "date": "2024-12",
+    "category": "机器学习"
+}

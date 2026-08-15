@@ -1,0 +1,16 @@
+{
+    "python": ["基本使用","面向对象","数据处理"],
+    "huggingface": ["自然语言处理"],
+    "pandas": ["数据处理"],
+    "numpy": ["数值计算"],
+    "scikit-learn": ["机器学习"],
+    "pytorch": ["深度学习"],
+    "tensorflow": ["深度学习"],
+    "xgboost": ["机器学习"],
+    "plotly": ["数据可视化"],
+    "matplotlib": ["数据可视化"],
+    "prophet": ["时间序列预测"],
+    "git": ["版本控制"]
+    
+
+}

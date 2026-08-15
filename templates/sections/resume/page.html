@@ -1,0 +1,82 @@
+<!-- PDF预览区域 -->
+<section id="resume-preview" class="py-12 px-6 bg-dots min-h-[calc(100vh-200px)]">
+    <div class="container mx-auto max-w-5xl">
+        <div class="bg-white rounded-lg shadow-sm border border-[#E1E4E8] overflow-hidden">
+            <!-- PDF预览器头部 -->
+            <div class="p-4 md:p-6 border-b border-[#E1E4E8] flex justify-between items-center bg-[#F0F6FF]">
+                <h2 class="text-lg font-bold text-[#1D2D35] flex items-center gap-2">
+                    <i class="fa-solid fa-file-pdf text-[#006FE6]"></i>
+                    简历预览
+                </h2>
+                <div class="flex items-center gap-3">
+                    <span class="text-xs font-mono text-[#8D9EA9] bg-white px-2 py-1 rounded border border-[#E1E4E8] hidden md:block">
+                        PDF
+                    </span>
+                    <a href="{{ pdf_path }}" download class="text-sm text-[#006FE6] hover:underline font-medium md:hidden">
+                        下载
+                    </a>
+                </div>
+            </div>
+
+            <!-- PDF嵌入 -->
+            <div class="bg-gray-50 p-1 md:p-4">
+                <embed src="{{ pdf_path }}"
+                       type="application/pdf"
+                       width="100%"
+                       height="800"
+                       class="rounded border border-gray-200 bg-white shadow-sm w-full">
+                
+                <!-- 移动端提示 -->
+                <div class="md:hidden text-center py-8 px-4">
+                    <p class="text-gray-500 text-sm mb-4">您的设备可能不支持直接预览 PDF</p>
+                    <a href="{{ pdf_path }}" class="inline-block bg-[#006FE6] text-white px-6 py-2 rounded-lg font-medium">
+                        下载简历查看
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 页面特定样式 -->
+<style>
+    .bg-dots {
+        background-image: radial-gradient(#E1E4E8 1px, transparent 1px);
+        background-size: 20px 20px;
+    }
+
+    /* 响应式PDF预览 */
+    @media (max-width: 768px) {
+        embed {
+            height: 500px;
+            display: none; /* 移动端隐藏 embed，使用下载链接 */
+        }
+        .md\:hidden {
+            display: block;
+        }
+    }
+    @media (min-width: 769px) {
+        .md\:hidden {
+            display: none;
+        }
+    }
+
+    /* 打印样式 */
+    @media print {
+        .container {
+            max-width: none !important;
+            padding: 0 !important;
+        }
+        nav, footer, .bg-dots {
+            display: none !important;
+        }
+        section {
+            padding: 0 !important;
+            background: white !important;
+        }
+        embed {
+            height: 100vh !important;
+            border: none !important;
+        }
+    }
+</style>

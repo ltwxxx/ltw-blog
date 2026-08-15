@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="zh-CN" id="html-lang">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人博客 - 梁庭威</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="../../../logo.jpg">
+    <link rel="apple-touch-icon" href="../../../logo.jpg">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Docker Style Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        docker: {
+                            blue: '#006FE6',     // Docker Primary Blue
+                            dark: '#1D1D1F',     // Dark Text
+                            gray: '#575757',     // Secondary Text
+                            light: '#F5F6F7',    // Light Background
+                            border: '#E5E7EB',   // Border
+                            hover: '#005FB8',    // Blue Hover
+                            bg: '#FFFFFF'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif']
+                    },
+                    backgroundImage: {
+                        'dotted-pattern': 'radial-gradient(#D1D5DB 1px, transparent 1px)'
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .bg-dotted {
+                background-image: radial-gradient(#E5E7EB 1px, transparent 1px);
+                background-size: 24px 24px;
+            }
+        }
+        body {
+            @apply text-docker-dark antialiased bg-dotted bg-white font-sans;
+        }
+        .card-hover {
+            @apply transition-all duration-300;
+        }
+        .card-hover:hover {
+            @apply shadow-md -translate-y-1;
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-docker-border">
+        <div class="container mx-auto px-4 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-4">
+                <a href="../../home.html" class="flex items-center text-docker-blue hover:text-docker-hover transition-colors">
+                    <i class="fa-brands fa-docker text-2xl mr-2"></i>
+                    <span class="text-xl font-bold text-docker-dark">博客</span>
+                </a>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="../../home.html" class="flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-600 hover:text-docker-blue hover:bg-docker-light rounded-md transition-all">
+                    <i class="fa-arrow-left"></i>
+                    返回首页
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="bg-docker-light border-b border-docker-border py-16">
+        <div class="container mx-auto px-4 text-center">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white shadow-sm mb-6 text-docker-blue text-3xl">
+                <i class="fa-solid fa-code"></i>
+            </div>
+            <h1 class="text-3xl md:text-4xl font-bold text-docker-dark mb-4" data-i18n-key="categories.技术分享">
+                技术分享
+            </h1>
+            <p class="text-lg text-docker-gray max-w-2xl mx-auto mb-6">
+                
+            </p>
+            <div class="inline-flex items-center px-4 py-2 bg-white rounded-full text-sm text-docker-gray border border-docker-border shadow-sm">
+                <i class="fa-solid fa-file-lines mr-2 text-docker-blue"></i>
+                <span data-i18n-key="common.view_articles" data-i18n-params='{"count": 4}'>
+                    4 Articles
+                </span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Content -->
+    <main class="flex-grow py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <article class="group bg-white rounded-lg border border-docker-border overflow-hidden card-hover flex flex-col h-full">
+                    <div class="relative h-48 overflow-hidden bg-gray-100 border-b border-gray-100">
+                        <img src="本博客项目开发的经验和总结/zmd4.jpg" alt="我的博客项目总结" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                    </div>
+                    
+                    <div class="p-6 flex flex-col flex-grow">
+                        <div class="flex items-center gap-2 mb-3 text-xs text-gray-400 font-mono">
+                            <i class="fa-regular fa-calendar"></i>
+                            <time>2025-02-15</time>
+                        </div>
+                        
+                        <h2 class="text-xl font-bold text-docker-dark mb-3 leading-tight group-hover:text-docker-blue transition-colors">
+                            <a href="本博客项目开发的经验和总结/content.html" class="block">
+                                我的博客项目总结
+                            </a>
+                        </h2>
+                        
+                        <p class="text-sm text-gray-600 mb-4 line-clamp-3 flex-grow">
+                            分享个人主页项目的完整开发经验，包括内容-模板-生成分离架构设计、Jinja2模板引擎应用、Docker多阶段构建优化、Nginx性能调优等核心技术实践，以及自动化部署流程的实现。
+                        </p>
+                        
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 text-xs bg-docker-light text-docker-gray rounded border border-gray-200">
+                                #静态站点生成
+                            </span>
+                            <span class="px-2 py-1 text-xs bg-docker-light text-docker-gray rounded border border-gray-200">
+                                #Docker
+                            </span>
+                            <span class="px-2 py-1 text-xs bg-docker-light text-docker-gray rounded border border-gray-200">
+                                #Nginx
+                            </span>
+                            <span class="px-2 py-1 text-xs bg-docker-light text-docker-gray rounded border border-gray-200">
+                                #Jinja2
+                            </span>
+                            <span class="px-2 py-1 text-xs bg-docker-light text-docker-gray rounded border border-gray-200">
+                                #Python
+                            </span>
+                            <span class="px-2 py-1 text-xs bg-docker-light text-docker-gray rounded border border-gray-200">
+                                #架构设计
+                            </span>
+                            <span class="px-2 py-1 text-xs bg-docker-light text-docker-gray rounded border border-gray-200">
+                                #DevOps
+                            </span>
+                            <span class="px-2 py-1 text-xs bg-docker-light text-docker-gray rounded border border-gray-200">
+                                #自动化部署
+                            </span>
+                        </div>
+                        
+                        <div class="pt-4 border-t border-gray-50 flex items-center justify-between mt-auto">
+                            <a href="本博客项目开发的经验和总结/content.html" class="text-sm font-medium text-docker-blue hover:underline flex items-center gap-1 group/link">
+                                <span data-i18n-key="common.read_more">Read more</span>
+                                <i class="fa-solid fa-arrow-right transform group-hover/link:translate-x-1 transition-transform"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+                <article class="group bg-white rounded-lg border border-docker-border overflow-hidden card-hover flex flex-col h-full">
+                    <div class="relative h-48 overflow-hidden bg-gray-100 border-b border-gray-100">
+                        <img src="BUG与解决方案报告/报告background.png" alt="个人博客 Bug 与解决方案报告" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                    </div>
+                    
+                    <div class="p-6 flex flex-col flex-grow">
+                        <div class="flex items-center gap-2 mb-3 text-xs text-gray-400 font-mono">
+                            <i class="fa-regular fa-calendar"></i>
+                            <time>2025-02-10</time>
+                        </div>
+                        
+                        <h2 class="text-xl font-bold text-docker-dark mb-3 leading-tight group-hover:text-docker-blue transition-colors">
+                            <a href="BUG与解决方案报告/content.html" class="block">
+                                个人博客 Bug 与解决方案报告
+                            </a>
+                        </h2>
+                        
+                        <p class="text-sm text-gray-600 mb-4 line-clamp-3 flex-grow">
+                            汇总本博客项目在开发与使用过程中遇到的各类问题及解决办法，包括环境与运行、链接与展示、脚本逻辑、路径配置等，便于日后查阅与排查。
+                        </p>
+                        
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 text-xs bg-docker-light text-docker-gray rounded border border-gray-200">
+                                #Bug 排查
+                            </span>
+                            <span class="px-2 py-1 text-xs bg-docker-light text-docker-gray rounded border border-gray-200">
+                                #静态站点
+                            </span>
+                            <span class="px-2 py-1 text-xs bg-docker-light text-docker-gray rounded border border-gray-200">
+                                #Docker
+                            </span>
+                            <span class="px-2 py-1 text-xs bg-docker-light text-docker-gray rounded border border-gray-200">
+                                #gen.py
+                            </span>
+                            <span class="px-2 py-1 text-xs bg-docker-light text-docker-gray rounded border border-gray-200">
+                                #部署
+                            </span>
+                            <span class="px-2 py-1 text-xs bg-docker-light text-docker-gray rounded border border-gray-200">
+                                #Python
+                            </span>
+                        </div>
+                        
+                        <div class="pt-4 border-t border-gray-50 flex items-center justify-between mt-auto">
+                            <a href="BUG与解决方案报告/content.html" class="text-sm font-medium text-docker-blue hover:underline flex items-center gap-1 group/link">
+                                <span data-i18n-key="common.read_more">Read more</span>
+                                <i class="fa-solid fa-arrow-right transform group-hover/link:translate-x-1 transition-transform"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+                <article class="group bg-white rounded-lg border border-docker-border overflow-hidden card-hover flex flex-col h-full">
+                    <div class="relative h-48 overflow-hidden bg-gray-100 border-b border-gray-100">
+                        <img src="数据总线实现/zmd-luoxi.png" alt="数据标注到模型预测" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                    </div>
+                    
+                    <div class="p-6 flex flex-col flex-grow">
+                        <div class="flex items-center gap-2 mb-3 text-xs text-gray-400 font-mono">
+                            <i class="fa-regular fa-calendar"></i>
+                            <time>2025-01-15</time>
+                        </div>
+                        
+                        <h2 class="text-xl font-bold text-docker-dark mb-3 leading-tight group-hover:text-docker-blue transition-colors">
+                            <a href="数据总线实现/content.html" class="block">
+                                数据标注到模型预测
+                            </a>
+                        </h2>
+                        
+                        <p class="text-sm text-gray-600 mb-4 line-clamp-3 flex-grow">
+                            分享数据处理实践经验，从数据预处理、系统资源管理到网络数据传输，结合项目案例深入探讨数据处理的核心技能...
+                        </p>
+                        
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 text-xs bg-docker-light text-docker-gray rounded border border-gray-200">
+                                #数据处理
+                            </span>
+                            <span class="px-2 py-1 text-xs bg-docker-light text-docker-gray rounded border border-gray-200">
+                                #数据预处理
+                            </span>
+                            <span class="px-2 py-1 text-xs bg-docker-light text-docker-gray rounded border border-gray-200">
+                                #Python
+                            </span>
+                            <span class="px-2 py-1 text-xs bg-docker-light text-docker-gray rounded border border-gray-200">
+                                #机器学习
+                            </span>
+                            <span class="px-2 py-1 text-xs bg-docker-light text-docker-gray rounded border border-gray-200">
+                                #数据科学
+                            </span>
+                        </div>
+                        
+                        <div class="pt-4 border-t border-gray-50 flex items-center justify-between mt-auto">
+                            <a href="数据总线实现/content.html" class="text-sm font-medium text-docker-blue hover:underline flex items-center gap-1 group/link">
+                                <span data-i18n-key="common.read_more">Read more</span>
+                                <i class="fa-solid fa-arrow-right transform group-hover/link:translate-x-1 transition-transform"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+                <article class="group bg-white rounded-lg border border-docker-border overflow-hidden card-hover flex flex-col h-full">
+                    <div class="relative h-48 overflow-hidden bg-gray-100 border-b border-gray-100">
+                        <img src="BERT文本语义相似度实践/zmd2.jpg" alt="学习BERT文本语义相似度" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                    </div>
+                    
+                    <div class="p-6 flex flex-col flex-grow">
+                        <div class="flex items-center gap-2 mb-3 text-xs text-gray-400 font-mono">
+                            <i class="fa-regular fa-calendar"></i>
+                            <time>2024-11-20</time>
+                        </div>
+                        
+                        <h2 class="text-xl font-bold text-docker-dark mb-3 leading-tight group-hover:text-docker-blue transition-colors">
+                            <a href="BERT文本语义相似度实践/content.html" class="block">
+                                学习BERT文本语义相似度
+                            </a>
+                        </h2>
+                        
+                        <p class="text-sm text-gray-600 mb-4 line-clamp-3 flex-grow">
+                            详细介绍基于BERT的文本语义相似度判断任务实现，包括数据预处理、模型训练、评估分析等全流程技术细节，分享Hugging Face生态系统的使用经验。
+                        </p>
+                        
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 text-xs bg-docker-light text-docker-gray rounded border border-gray-200">
+                                #BERT
+                            </span>
+                            <span class="px-2 py-1 text-xs bg-docker-light text-docker-gray rounded border border-gray-200">
+                                #自然语言处理
+                            </span>
+                            <span class="px-2 py-1 text-xs bg-docker-light text-docker-gray rounded border border-gray-200">
+                                #文本匹配
+                            </span>
+                            <span class="px-2 py-1 text-xs bg-docker-light text-docker-gray rounded border border-gray-200">
+                                #Hugging Face
+                            </span>
+                            <span class="px-2 py-1 text-xs bg-docker-light text-docker-gray rounded border border-gray-200">
+                                #深度学习
+                            </span>
+                            <span class="px-2 py-1 text-xs bg-docker-light text-docker-gray rounded border border-gray-200">
+                                #迁移学习
+                            </span>
+                        </div>
+                        
+                        <div class="pt-4 border-t border-gray-50 flex items-center justify-between mt-auto">
+                            <a href="BERT文本语义相似度实践/content.html" class="text-sm font-medium text-docker-blue hover:underline flex items-center gap-1 group/link">
+                                <span data-i18n-key="common.read_more">Read more</span>
+                                <i class="fa-solid fa-arrow-right transform group-hover/link:translate-x-1 transition-transform"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-docker-border py-12">
+        <div class="container mx-auto px-4 text-center">
+            <div class="flex justify-center items-center gap-6 mb-8">
+                <a href="#" class="text-gray-400 hover:text-docker-blue transition-colors"><i class="fa-brands fa-github text-xl"></i></a>
+                <a href="#" class="text-gray-400 hover:text-docker-blue transition-colors"><i class="fa-brands fa-twitter text-xl"></i></a>
+                <a href="#" class="text-gray-400 hover:text-docker-blue transition-colors"><i class="fa-brands fa-linkedin text-xl"></i></a>
+            </div>
+            <p class="text-docker-gray mb-2">博客模块 - 记录技术学习、生活感悟与投资思考</p>
+            <p class="text-sm text-gray-400 mb-4">&copy; 2025 个人博客 - 梁庭威</p>
+            <a href="https://beian.miit.gov.cn/" target="_blank" rel="nofollow" class="text-xs text-gray-300 hover:text-gray-500 transition-colors">
+                粤ICP备2025393362号-2
+            </a>
+        </div>
+    </footer>
+
+    <!-- i18n Script -->
+    <script>
+        let currentLang = localStorage.getItem('preferred-language') || 'zh';
+        let i18nData = null;
+
+        async function loadI18nData() {
+            try {
+                const possiblePaths = ['/data/i18n.json', 'data/i18n.json', '../data/i18n.json', '../../data/i18n.json', '../../../data/i18n.json'];
+                for (const path of possiblePaths) {
+                    try {
+                        const response = await fetch(path);
+                        if (response.ok) {
+                            i18nData = await response.json();
+                            applyLanguage(currentLang);
+                            break;
+                        }
+                    } catch (e) { continue; }
+                }
+            } catch (error) {
+                console.warn('无法加载语言数据:', error);
+            }
+        }
+
+        function t(key, lang = currentLang, params = {}) {
+            if (!i18nData) return key;
+            const keys = key.split('.');
+            let value = i18nData[lang];
+            for (const k of keys) {
+                if (value && value[k]) value = value[k];
+                else return key;
+            }
+            if (typeof value === 'string' && params) {
+                Object.keys(params).forEach(param => {
+                    value = value.replace(`{${param}}`, params[param]);
+                });
+            }
+            return value;
+        }
+
+        function applyLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('preferred-language', lang);
+            document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+            document.querySelectorAll('[data-i18n-key]').forEach(element => {
+                const key = element.getAttribute('data-i18n-key');
+                const paramsAttr = element.getAttribute('data-i18n-params');
+                let params = {};
+                if (paramsAttr) {
+                    try { params = JSON.parse(paramsAttr); }
+                    catch (e) {
+                        const count = element.getAttribute('data-count');
+                        if (count) params = { count: count };
+                    }
+                }
+                const text = t(key, lang, params);
+                if (text && text !== key) element.textContent = text;
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            loadI18nData();
+        });
+    </script>
+</body>
+</html>

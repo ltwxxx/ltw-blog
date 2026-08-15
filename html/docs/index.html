@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文档下载 - 文档下载</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="../../../logo.jpg">
+    <link rel="apple-touch-icon" href="../../../logo.jpg">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- ScrollReveal -->
+    <script src="https://unpkg.com/scrollreveal@4.0.9/dist/scrollreveal.min.js"></script>
+
+    <!-- Docker 风格配置 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        docker: {
+                            blue: '#006FE6',
+                            darkBlue: '#092953',
+                            lightBlue: '#F0F6FF',
+                            bg: '#ffffff',
+                            text: '#1D2D35',
+                            gray: '#8D9EA9',
+                            border: '#E1E4E8'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'Roboto', 'system-ui', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .bg-dots {
+                background-image: radial-gradient(#E1E4E8 1px, transparent 1px);
+                background-size: 20px 20px;
+            }
+            .card-hover {
+                transition: all 0.2s ease-in-out;
+            }
+            .card-hover:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+                border-color: #006FE6;
+            }
+        }
+    </style>
+</head>
+<body class="font-sans text-docker-text antialiased bg-white">
+
+    <!-- 导航栏 -->
+    <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-docker-border">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="../../../home.html" class="flex items-center gap-2 group">
+                    <div class="w-8 h-8 bg-docker-blue rounded flex items-center justify-center text-white font-bold group-hover:bg-blue-600 transition-colors">
+                        <i class="fa-solid fa-cube"></i>
+                    </div>
+                    <span class="text-xl font-bold tracking-tight group-hover:text-docker-blue transition-colors">文档下载</span>
+                </a>
+                
+                <div class="flex items-center gap-4">
+                    <a href="../home.html" 
+                       class="text-sm font-medium px-4 py-2 rounded-lg transition-colors text-docker-gray hover:text-docker-blue hover:bg-docker-lightBlue">
+                        <i class="fa-solid fa-arrow-left mr-1"></i>
+                        返回首页
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 页面标题区域 -->
+    <header class="relative pt-20 pb-16 bg-dots">
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-white pointer-events-none"></div>
+        <div class="container mx-auto px-6 text-center relative z-10">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6 text-docker-darkBlue tracking-tight reveal-element">
+                文档下载
+            </h1>
+            <p class="text-xl text-docker-gray max-w-2xl mx-auto leading-relaxed reveal-element" data-sr-delay="100">
+                这里提供一些我整理的文档，供大家参考
+            </p>
+            <div class="flex flex-wrap justify-center gap-2 mt-8 reveal-element" data-sr-delay="200">
+                <span class="px-3 py-1 bg-docker-lightBlue text-docker-blue rounded-full text-xs font-bold uppercase tracking-wide border border-blue-100">
+                    实习证明
+                </span>
+                <span class="px-3 py-1 bg-docker-lightBlue text-docker-blue rounded-full text-xs font-bold uppercase tracking-wide border border-blue-100">
+                    竞赛奖项
+                </span>
+                <span class="px-3 py-1 bg-docker-lightBlue text-docker-blue rounded-full text-xs font-bold uppercase tracking-wide border border-blue-100">
+                    获奖证明
+                </span>
+                <span class="px-3 py-1 bg-docker-lightBlue text-docker-blue rounded-full text-xs font-bold uppercase tracking-wide border border-blue-100">
+                    技能证书
+                </span>
+                <span class="px-3 py-1 bg-docker-lightBlue text-docker-blue rounded-full text-xs font-bold uppercase tracking-wide border border-blue-100">
+                    因子文档
+                </span>
+                <span class="px-3 py-1 bg-docker-lightBlue text-docker-blue rounded-full text-xs font-bold uppercase tracking-wide border border-blue-100">
+                    论文文档
+                </span>
+                <span class="px-3 py-1 bg-docker-lightBlue text-docker-blue rounded-full text-xs font-bold uppercase tracking-wide border border-blue-100">
+                    项目文档
+                </span>
+                <span class="px-3 py-1 bg-docker-lightBlue text-docker-blue rounded-full text-xs font-bold uppercase tracking-wide border border-blue-100">
+                    其他文档
+                </span>
+            </div>
+        </div>
+    </header>
+
+    <!-- 文档列表区域 -->
+    <section id="docs-content" class="py-12 px-6">
+        <div class="container mx-auto max-w-6xl">
+            <!-- 分类标题 -->
+            <div class="mb-12 reveal-element">
+                <div class="flex items-center gap-4 mb-8 border-b border-docker-border pb-4">
+                    <div class="w-10 h-10 bg-docker-lightBlue rounded-lg flex items-center justify-center text-docker-blue">
+                        <i class="fa-solid fa-folder-open text-xl"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold text-docker-darkBlue">
+                        实习证明
+                        <span class="ml-2 text-sm font-normal text-docker-gray bg-gray-100 px-2 py-0.5 rounded-full">
+                            1
+                        </span>
+                    </h2>
+                </div>
+
+                <!-- 文档卡片网格 -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-white rounded-lg border border-docker-border overflow-hidden card-hover group h-full flex flex-col">
+                        <!-- 卡片内容 -->
+                        <div class="p-6 flex-1">
+                            <div class="flex items-start justify-between mb-4">
+                                <div class="flex items-start gap-4">
+                                    <div class="w-12 h-12 bg-gray-50 rounded-lg flex items-center justify-center border border-gray-100 shrink-0 group-hover:bg-docker-lightBlue group-hover:border-blue-100 transition-colors">
+                                        <i class="fa-solid fa-file-code text-xl text-gray-400 group-hover:text-docker-blue transition-colors"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-bold text-docker-text text-lg leading-tight mb-1 group-hover:text-docker-blue transition-colors">
+                                            深圳濠森科技有限公司-数据标注
+                                        </h3>
+                                        <p class="text-xs text-docker-gray">
+                                            MD 文件
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center gap-4 text-sm text-docker-gray mt-4">
+                                <span class="flex items-center gap-1">
+                                    <i class="fa-solid fa-weight-hanging text-xs"></i>
+                                    0B
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- 下载按钮 -->
+                        <div class="px-6 pb-6 mt-auto">
+                            <a href="files/实习证明1.md"
+                               download="深圳濠森科技有限公司-数据标注"
+                               class="w-full bg-white border border-docker-border text-docker-text py-2.5 rounded-lg hover:border-docker-blue hover:text-docker-blue transition-all flex items-center justify-center gap-2 text-sm font-medium group-hover:bg-docker-blue group-hover:text-white group-hover:border-docker-blue">
+                                <i class="fa-solid fa-download"></i>
+                                <span>下载文档</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-white border-t border-docker-border py-12 px-6 mt-12">
+        <div class="container mx-auto text-center">
+            <p class="text-docker-text font-medium mb-2">
+                文档下载模块 - 提供技术资料和文档下载服务
+            </p>
+            <p class="text-docker-gray text-sm">
+                © 2025 个人主页
+            </p>
+            <div class="mt-4 text-xs text-docker-gray">
+                <a href="https://beian.miit.gov.cn/" target="_blank" rel="nofollow" class="hover:text-docker-blue transition-colors">
+                    粤ICP备2025393362号-2
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        ScrollReveal().reveal('.reveal-element', {
+            distance: '20px',
+            origin: 'bottom',
+            duration: 600,
+            interval: 100,
+            cleanup: true
+        });
+    </script>
+</body>
+</html>

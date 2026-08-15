@@ -1,0 +1,10 @@
+{
+    "id": "homepage-development-experience",
+    "title": "我的博客项目总结",
+    "date": "2025-02-15",
+    "summary": "分享个人主页项目的完整开发经验，包括内容-模板-生成分离架构设计、Jinja2模板引擎应用、Docker多阶段构建优化、Nginx性能调优等核心技术实践，以及自动化部署流程的实现。",
+    "image": "zmd4.jpg",
+    "category": "技术分享",
+    "tags": ["静态站点生成", "Docker", "Nginx", "Jinja2", "Python", "架构设计", "DevOps", "自动化部署"],
+    "status": "published"
+}

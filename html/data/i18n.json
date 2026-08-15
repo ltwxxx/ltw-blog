@@ -1,0 +1,204 @@
+{
+  "zh": {
+    "nav": {
+      "home": "首页",
+      "resume": "个人简历",
+      "blog": "博客",
+      "project": "项目经历",
+      "docs": "文档下载",
+      "stack": "技术栈",
+      "contact": "联系方式",
+      "guestbook": "留言板",
+      "language": "语言"
+    },
+    "search": {
+      "placeholder": "搜索博客、项目...",
+      "no_results": "未找到相关内容",
+      "results": "搜索结果"
+    },
+    "footer": {
+      "text": "© 2025 梁庭威 | 个人博客",
+      "tagline": "欢迎光临"
+    },
+      "common": {
+        "read_more": "阅读全文",
+        "view_all": "查看全部",
+        "articles": "篇文章",
+        "projects": "个项目",
+        "view_details": "查看详情",
+        "go_to": "前往",
+        "view_all_articles": "查看全部 {count} 篇文章",
+        "view_articles": "查看{count}篇文章",
+        "view_all_projects": "查看全部 {count} 个项目",
+        "view_projects": "查看{count}个项目",
+        "all_projects": "所有项目",
+        "min_read": "分钟阅读"
+      },
+    "hero": {
+      "title": "数据驱动 · Python\n开发 · 机器学习",
+      "title_line1": "数据驱动 · Python",
+      "title_line2": "开发 · 机器学习",
+      "subtitle": "专注Python开发、数据处理、机器学习与深度学习",
+      "button": "查看我的简历"
+    },
+    "sections": {
+      "blog": {
+        "title": "技术博客",
+        "subtitle": "分享技术学习、项目实践与个人成长"
+      },
+      "project": {
+        "title": "项目经历",
+        "subtitle": "展示我的技术项目与实践经验"
+      },
+      "resume": {
+        "title": "个人简历",
+        "subtitle": "了解我的教育背景、技术栈和项目经验",
+        "button": "查看完整简历",
+        "education": "教育背景",
+        "stack": "技术栈",
+        "expectation": "求职意向",
+        "projects": "代表项目",
+        "page_title": "个人简历",
+        "education_content": "湛江科技学院 · 数字媒体技术 · 本科（2022-2026）",
+        "stack_content": "Python · 数据处理 · 机器学习 · 深度学习 · 时间序列预测 · 集成学习",
+        "expectation_content": "Python开发工程师 | 数据处理工程师 | 机器学习工程师",
+        "project_1": "香烟销量和销售额预测基于多模型集成学习方法 · 基于ARIMA、Prophet、LSTM、XGBoost的销售预测项目"
+      },
+      "docs": {
+        "title": "文档下载",
+        "subtitle": "技术资料和文档下载",
+        "page_title": "文档下载",
+        "page_subtitle": "这里提供一些我整理的文档，供大家参考",
+        "browse_docs": "浏览文档",
+        "download_doc": "下载文档",
+        "file_not_exists": "文件不存在",
+        "documents_count": "{count} 个文档",
+        "footer_text": "文档下载模块 - 提供技术资料和文档下载服务"
+      },
+      "stack": {
+        "title": "技术栈",
+        "subtitle": "我掌握的技术和工具"
+      },
+      "contact": {
+        "title": "联系方式",
+        "subtitle": "欢迎与我联系"
+      },
+      "guestbook": {
+        "title": "留言板",
+        "subtitle": "欢迎留下您的想法、建议或问题，我会尽快回复",
+        "button": "前往留言板",
+        "welcome": "欢迎留言",
+        "description": "分享您的想法、建议或问题，我会认真阅读每一条留言"
+      },
+      "site": {
+        "title": "梁庭威 | 个人博客"
+      },
+      "categories": {
+        "技术分享": "技术分享",
+        "机器学习": "机器学习",
+        "随想": "随想录"
+      }
+    }
+  },
+  "en": {
+    "nav": {
+      "home": "Home",
+      "resume": "Resume",
+      "blog": "Blog",
+      "project": "Projects",
+      "docs": "Docs",
+      "stack": "Tech Stack",
+      "contact": "Contact",
+      "guestbook": "Guestbook",
+      "language": "Language"
+    },
+    "search": {
+      "placeholder": "Search blogs, projects...",
+      "no_results": "No results found",
+      "results": "Search Results"
+    },
+    "footer": {
+      "text": "© 2025 Liang Tingwei | Personal Blog",
+      "tagline": "Welcome"
+    },
+      "common": {
+        "read_more": "Read More",
+        "view_all": "View All",
+        "articles": " articles",
+        "projects": " projects",
+        "view_details": "View Details",
+        "go_to": "Go to",
+        "view_all_articles": "View All {count} Articles",
+        "view_articles": "View {count} Articles",
+        "view_all_projects": "View All {count} Projects",
+        "view_projects": "View {count} Projects",
+        "all_projects": "All Projects",
+        "min_read": "min read"
+      },
+    "hero": {
+      "title": "Data-Driven · Python\nDevelopment · Machine Learning",
+      "title_line1": "Data-Driven · Python",
+      "title_line2": "Development · Machine Learning",
+      "subtitle": "Focus on Python development, data processing, machine learning and deep learning",
+      "button": "View My Resume"
+    },
+    "sections": {
+      "blog": {
+        "title": "Tech Blog",
+        "subtitle": "Sharing technical learning, project practice and personal growth"
+      },
+      "project": {
+        "title": "Projects",
+        "subtitle": "Showcasing my technical projects and practical experience"
+      },
+      "resume": {
+        "title": "Resume",
+        "subtitle": "Learn about my education, tech stack and project experience",
+        "button": "View Full Resume",
+        "education": "Education",
+        "stack": "Tech Stack",
+        "expectation": "Career Objective",
+        "projects": "Featured Projects",
+        "page_title": "Resume",
+        "education_content": "Zhanjiang University of Science and Technology · Digital Media Technology · Bachelor (2022-2026)",
+        "stack_content": "Python · Data Processing · Machine Learning · Deep Learning · Time Series Forecasting · Ensemble Learning",
+        "expectation_content": "Python Developer | Data Processing Engineer | Machine Learning Engineer",
+        "project_1": "Cigarette Sales and Revenue Prediction Based on Multi-Model Ensemble Learning · Sales forecasting project using ARIMA, Prophet, LSTM, XGBoost"
+      },
+      "docs": {
+        "title": "Documentation",
+        "subtitle": "Technical materials and document downloads",
+        "page_title": "Documentation",
+        "page_subtitle": "Here are some documents I've organized for your reference",
+        "browse_docs": "Browse Documents",
+        "download_doc": "Download Document",
+        "file_not_exists": "File Not Found",
+        "documents_count": "{count} documents",
+        "footer_text": "Documentation Module - Providing technical materials and document download services"
+      },
+      "stack": {
+        "title": "Tech Stack",
+        "subtitle": "Technologies and tools I master"
+      },
+      "contact": {
+        "title": "Contact",
+        "subtitle": "Feel free to reach out"
+      },
+      "guestbook": {
+        "title": "Guestbook",
+        "subtitle": "Welcome to leave your thoughts, suggestions or questions, I will reply as soon as possible",
+        "button": "Go to Guestbook",
+        "welcome": "Welcome",
+        "description": "Share your thoughts, suggestions or questions, I will read every message carefully"
+      },
+      "site": {
+        "title": "Liang Tingwei | Personal Blog"
+      },
+      "categories": {
+        "技术分享": "Tech Sharing",
+        "机器学习": "Machine Learning",
+        "随想": "Thoughts"
+      }
+    }
+  }
+}

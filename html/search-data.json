@@ -1,0 +1,211 @@
+[
+  {
+    "type": "blog",
+    "title": "数据标注到模型预测",
+    "summary": "分享数据处理实践经验，从数据预处理、系统资源管理到网络数据传输，结合项目案例深入探讨数据处理的核心技能...",
+    "category": "技术分享",
+    "tags": [
+      "数据处理",
+      "数据预处理",
+      "Python",
+      "机器学习",
+      "数据科学"
+    ],
+    "date": "2025-01-15",
+    "url": "blog/技术分享/数据总线实现/index.html"
+  },
+  {
+    "type": "blog",
+    "title": "个人博客 Bug 与解决方案报告",
+    "summary": "汇总本博客项目在开发与使用过程中遇到的各类问题及解决办法，包括环境与运行、链接与展示、脚本逻辑、路径配置等，便于日后查阅与排查。",
+    "category": "技术分享",
+    "tags": [
+      "Bug 排查",
+      "静态站点",
+      "Docker",
+      "gen.py",
+      "部署",
+      "Python"
+    ],
+    "date": "2025-02-10",
+    "url": "blog/技术分享/BUG与解决方案报告/index.html"
+  },
+  {
+    "type": "blog",
+    "title": "学习BERT文本语义相似度",
+    "summary": "详细介绍基于BERT的文本语义相似度判断任务实现，包括数据预处理、模型训练、评估分析等全流程技术细节，分享Hugging Face生态系统的使用经验。",
+    "category": "技术分享",
+    "tags": [
+      "BERT",
+      "自然语言处理",
+      "文本匹配",
+      "Hugging Face",
+      "深度学习",
+      "迁移学习"
+    ],
+    "date": "2024-11-20",
+    "url": "blog/技术分享/BERT文本语义相似度实践/index.html"
+  },
+  {
+    "type": "blog",
+    "title": "我的博客项目总结",
+    "summary": "分享个人主页项目的完整开发经验，包括内容-模板-生成分离架构设计、Jinja2模板引擎应用、Docker多阶段构建优化、Nginx性能调优等核心技术实践，以及自动化部署流程的实现。",
+    "category": "技术分享",
+    "tags": [
+      "静态站点生成",
+      "Docker",
+      "Nginx",
+      "Jinja2",
+      "Python",
+      "架构设计",
+      "DevOps",
+      "自动化部署"
+    ],
+    "date": "2025-02-15",
+    "url": "blog/技术分享/本博客项目开发的经验和总结/index.html"
+  },
+  {
+    "type": "blog",
+    "title": "时间序列预测在销售数据分析中的应用",
+    "summary": "分享时间序列预测实践经验，从数据预处理、ARIMA/LSTM/Prophet/XGBoost模型到集成学习，结合项目案例深入探讨销售预测技术...",
+    "category": "机器学习",
+    "tags": [
+      "时间序列预测",
+      "机器学习",
+      "销售预测",
+      "集成学习",
+      "Python"
+    ],
+    "date": "2025-01-17",
+    "url": "blog/机器学习/股票市场分析/index.html"
+  },
+  {
+    "type": "blog",
+    "title": "BERT项目从理论到实践的NLP学习之路",
+    "summary": "分享完成BERT文本语义相似度项目的心得体会，从理论学习到工程实践，从问题解决到能力提升，记录NLP学习路上的成长与思考。",
+    "category": "随想录",
+    "tags": [
+      "学习感悟",
+      "NLP",
+      "项目实践",
+      "个人成长",
+      "技术学习"
+    ],
+    "date": "2024-11-25",
+    "url": "blog/随想/BERT项目实践感悟/index.html"
+  },
+  {
+    "type": "blog",
+    "title": "职业规划：从学生到Python开发工程师",
+    "summary": "我应该如何成为一名Python开发工程师",
+    "category": "随想录",
+    "tags": [
+      "职业规划",
+      "Python开发",
+      "求职",
+      "个人成长"
+    ],
+    "date": "2025-01-17",
+    "url": "blog/随想/未来工作思考/index.html"
+  },
+  {
+    "type": "blog",
+    "title": "实习经历",
+    "summary": "分享我的实习经历",
+    "category": "随想录",
+    "tags": [
+      "实习经历",
+      "学习感悟",
+      "个人成长",
+      "职业发展"
+    ],
+    "date": "2025-01-19",
+    "url": "blog/随想/技术与人文/index.html"
+  },
+  {
+    "type": "blog",
+    "title": "东涌到西涌徒步记录",
+    "summary": "2026年2月13日，从深圳东涌村出发完成到西涌的海岸线穿越。全程7.9公里，运动时间4小时30分，途经铁链陡坡、许愿石、林间土路，在西涌看日落收尾。",
+    "category": "随想录",
+    "tags": [
+      "徒步",
+      "深圳",
+      "东涌",
+      "西涌",
+      "海岸线",
+      "户外"
+    ],
+    "date": "2026-02-13",
+    "url": "blog/随想/东涌到西涌徒步记录/index.html"
+  },
+  {
+    "type": "blog",
+    "title": "社团经历",
+    "summary": "从专业学习、辅导员助理到计算机社团，这些经历如何塑造我的职业观和人生观...",
+    "category": "随想录",
+    "tags": [
+      "大学生活",
+      "社团经历",
+      "个人成长",
+      "学习经历"
+    ],
+    "date": "2025-01-22",
+    "url": "blog/随想/数字游民生活/index.html"
+  },
+  {
+    "type": "project",
+    "title": "香烟销量和销售额预测基于多模型集成学习方法",
+    "summary": "基于ARIMA、Prophet、LSTM、XGBoost多模型集成学习的销售预测项目，使用线性回归作为元学习器，显著提升预测精度。获钉钉杯数模比赛三等奖。",
+    "category": "机器学习",
+    "technologies": [
+      "Python",
+      "ARIMA",
+      "LSTM",
+      "Prophet",
+      "XGBoost",
+      "集成学习",
+      "时间序列预测",
+      "机器学习",
+      "数据处理"
+    ],
+    "date": "2024-12",
+    "url": "project/香烟销量预测/index.html"
+  },
+  {
+    "type": "project",
+    "title": "个人主页生成部署工具",
+    "summary": "基于静态站点生成（SSG）技术的个人主页解决方案，采用内容-模板-生成分离架构，支持通过JSON和Markdown自定义内容，使用Docker容器化部署，实现一键生成和部署个人主页。",
+    "category": "Web开发",
+    "technologies": [
+      "Python",
+      "Jinja2",
+      "Docker",
+      "Nginx",
+      "Tailwind CSS",
+      "Markdown",
+      "静态站点生成",
+      "自动化部署",
+      "DevOps"
+    ],
+    "date": "2025-02",
+    "url": "project/个人主页生成部署工具/index.html"
+  },
+  {
+    "type": "project",
+    "title": "基于BERT预训练模型的文本语义相似度二分类任务",
+    "summary": "使用BERT预训练模型进行文本语义相似度判断，实现句子对二分类任务。基于Hugging Face生态完成从数据预处理到模型评估的全流程，训练集损失低至0.0925，验证集表现优异。",
+    "category": "自然语言处理",
+    "technologies": [
+      "Python",
+      "BERT",
+      "Hugging Face",
+      "Transformers",
+      "自然语言处理",
+      "文本匹配",
+      "深度学习",
+      "迁移学习"
+    ],
+    "date": "2024-11",
+    "url": "project/BERT文本语义相似度/index.html"
+  }
+]

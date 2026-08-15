@@ -1,0 +1,10 @@
+{
+    "id": "bert-text-similarity-practice",
+    "title": "学习BERT文本语义相似度",
+    "date": "2024-11-20",
+    "summary": "详细介绍基于BERT的文本语义相似度判断任务实现，包括数据预处理、模型训练、评估分析等全流程技术细节，分享Hugging Face生态系统的使用经验。",
+    "image": "zmd2.jpg",
+    "category": "技术分享",
+    "tags": ["BERT", "自然语言处理", "文本匹配", "Hugging Face", "深度学习", "迁移学习"],
+    "status": "published"
+}

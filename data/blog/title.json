@@ -1,0 +1,24 @@
+{
+    "title": "个人博客",
+    "subtitle": "记录技术学习、项目实践与个人成长",
+    "categories": [
+        {
+            "id": "技术分享",
+            "name": "技术分享",
+            "icon": "fa-code",
+            "description": ""
+        },
+        {
+            "id": "机器学习",
+            "name": "机器学习",
+            "icon": "fa-chart-line",
+            "description": ""
+        },
+        {
+            "id": "随想",
+            "name": "随想录",
+            "icon": "fa-brain",
+            "description": ""
+        }
+    ]
+}

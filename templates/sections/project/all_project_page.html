@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ frame.page_title }}</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="../../../logo.jpg">
+    <link rel="apple-touch-icon" href="../../../logo.jpg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        docker: {
+                            blue: '#006FE6',     // Docker Primary Blue
+                            dark: '#1D1D1F',     // Dark Text
+                            gray: '#575757',     // Secondary Text
+                            light: '#F5F6F7',    // Light Background
+                            border: '#E5E7EB',   // Border
+                            hover: '#005FB8',    // Blue Hover
+                            bg: '#FFFFFF'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif']
+                    },
+                    backgroundImage: {
+                        'dotted-pattern': 'radial-gradient(#D1D5DB 1px, transparent 1px)'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans text-docker-dark bg-white antialiased flex flex-col min-h-screen">
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-docker-border">
+        <div class="container mx-auto px-4 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-4">
+                <a href="../../home.html" class="flex items-center text-docker-blue hover:text-docker-hover transition-colors">
+                    <i class="fa-brands fa-docker text-2xl mr-2"></i>
+                    <span class="text-xl font-bold text-docker-dark">{{ frame.nav_title }}</span>
+                </a>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="../../home.html" class="flex items-center gap-2 text-docker-gray hover:text-docker-blue transition-colors px-3 py-2 rounded-lg hover:bg-docker-light">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>返回首页</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="bg-docker-light border-b border-docker-border relative overflow-hidden">
+        <div class="absolute inset-0 bg-dotted-pattern bg-[length:20px_20px] opacity-30"></div>
+        <div class="container mx-auto px-4 py-16 relative z-10 text-center">
+            <h1 class="text-4xl font-bold text-docker-dark mb-4">{{ frame.page_main_title }}</h1>
+            <p class="text-xl text-docker-gray max-w-2xl mx-auto">{{ frame.page_description }}</p>
+            <div class="mt-6 text-docker-gray">
+                <span class="inline-flex items-center px-3 py-1 rounded-full bg-white border border-docker-border text-sm">
+                    <i class="fas fa-project-diagram mr-2 text-docker-blue"></i>
+                    共 {{ total_projects }} 个项目
+                </span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {% for project in projects %}
+                <article class="group bg-white rounded-lg border border-docker-border hover:shadow-lg hover:border-docker-blue/30 transition-all duration-300 flex flex-col h-full overflow-hidden">
+                    {% if project.cover %}
+                    <div class="h-48 overflow-hidden border-b border-docker-border bg-docker-light relative">
+                        <img src="{{ project.cover }}" alt="{{ project.title }}" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-docker-blue/0 group-hover:bg-docker-blue/5 transition-colors duration-300"></div>
+                    </div>
+                    {% endif %}
+                    
+                    <div class="p-6 flex flex-col flex-grow">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-sm text-docker-gray bg-docker-light px-2 py-1 rounded border border-docker-border">
+                                <i class="far fa-calendar-alt mr-1"></i>{{ project.date }}
+                            </span>
+                            {% if project.tags %}
+                            <div class="flex gap-2">
+                                {% for tag in project.tags[:1] %}
+                                <span class="text-xs font-medium text-docker-blue bg-blue-50 px-2 py-1 rounded border border-blue-100">
+                                    {{ tag }}
+                                </span>
+                                {% endfor %}
+                            </div>
+                            {% endif %}
+                        </div>
+
+                        <h2 class="text-xl font-bold text-docker-dark mb-3 group-hover:text-docker-blue transition-colors line-clamp-2">
+                            <a href="{{ project.url }}" class="hover:text-docker-blue">
+                                {{ project.title }}
+                            </a>
+                        </h2>
+                        
+                        <p class="text-docker-gray mb-6 line-clamp-3 flex-grow">
+                            {{ project.summary }}
+                        </p>
+
+                        <div class="pt-4 mt-auto border-t border-docker-border flex items-center justify-between">
+                            <a href="{{ project.url }}" class="inline-flex items-center text-docker-blue font-medium hover:underline group/link">
+                                查看详情
+                                <i class="fas fa-arrow-right ml-1 transform group-hover/link:translate-x-1 transition-transform"></i>
+                            </a>
+                            <div class="flex gap-3 text-docker-gray">
+                                {% if project.github %}
+                                <a href="{{ project.github }}" class="hover:text-docker-dark transition-colors" target="_blank" title="GitHub">
+                                    <i class="fab fa-github text-lg"></i>
+                                </a>
+                                {% endif %}
+                                {% if project.demo %}
+                                <a href="{{ project.demo }}" class="hover:text-docker-dark transition-colors" target="_blank" title="Demo">
+                                    <i class="fas fa-external-link-alt text-lg"></i>
+                                </a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                {% endfor %}
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-docker-light border-t border-docker-border py-12 mt-auto">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="text-docker-gray text-sm">
+                    &copy; 2024 {{ frame.nav_title }}. All rights reserved.
+                </div>
+                <div class="flex gap-6">
+                    <a href="#" class="text-docker-gray hover:text-docker-blue transition-colors">
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                    <a href="#" class="text-docker-gray hover:text-docker-blue transition-colors">
+                        <i class="fab fa-twitter text-xl"></i>
+                    </a>
+                    <a href="#" class="text-docker-gray hover:text-docker-blue transition-colors">
+                        <i class="fab fa-linkedin text-xl"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

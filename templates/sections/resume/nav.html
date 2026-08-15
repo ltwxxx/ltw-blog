@@ -1,0 +1,24 @@
+<!-- 简历页面专用导航栏 (Docker Style) -->
+<nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200">
+    <div class="container mx-auto px-6 py-4">
+        <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2 group">
+                <div class="w-8 h-8 bg-[#006FE6] rounded flex items-center justify-center text-white font-bold group-hover:bg-blue-600 transition-colors">
+                    <i class="fa-solid fa-file-invoice"></i>
+                </div>
+                <h1 class="text-xl font-bold tracking-tight text-[#1D2D35] group-hover:text-[#006FE6] transition-colors">{{ page_title }}</h1>
+            </div>
+            
+            <div class="flex items-center gap-4">
+                {% for button in nav_buttons %}
+                <a href="{{ button.href }}"
+                   {% if button.download %}download="{{ button.download }}"{% endif %}
+                   class="text-sm font-medium px-4 py-2 rounded-lg transition-colors flex items-center gap-2 {% if 'bg-apple-hover' in button.class or 'primary' in button.class %}bg-[#006FE6] text-white hover:bg-blue-700{% else %}text-[#8D9EA9] hover:text-[#006FE6] hover:bg-[#F0F6FF]{% endif %}">
+                    <i class="fa-solid {{ button.icon }}"></i>
+                    {{ button.text }}
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</nav>

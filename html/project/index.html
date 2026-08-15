@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>项目经历 - 梁庭威</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="../../../logo.jpg">
+    <link rel="apple-touch-icon" href="../../../logo.jpg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        docker: {
+                            blue: '#006FE6',     // Docker Primary Blue
+                            dark: '#1D1D1F',     // Dark Text
+                            gray: '#575757',     // Secondary Text
+                            light: '#F5F6F7',    // Light Background
+                            border: '#E5E7EB',   // Border
+                            hover: '#005FB8',    // Blue Hover
+                            bg: '#FFFFFF'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif']
+                    },
+                    backgroundImage: {
+                        'dotted-pattern': 'radial-gradient(#D1D5DB 1px, transparent 1px)'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans text-docker-dark bg-white antialiased flex flex-col min-h-screen">
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-docker-border">
+        <div class="container mx-auto px-4 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-4">
+                <a href="../../home.html" class="flex items-center text-docker-blue hover:text-docker-hover transition-colors">
+                    <i class="fa-brands fa-docker text-2xl mr-2"></i>
+                    <span class="text-xl font-bold text-docker-dark">项目经历</span>
+                </a>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="../../home.html" class="flex items-center gap-2 text-docker-gray hover:text-docker-blue transition-colors px-3 py-2 rounded-lg hover:bg-docker-light">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>返回首页</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="bg-docker-light border-b border-docker-border relative overflow-hidden">
+        <div class="absolute inset-0 bg-dotted-pattern bg-[length:20px_20px] opacity-30"></div>
+        <div class="container mx-auto px-4 py-16 relative z-10 text-center">
+            <h1 class="text-4xl font-bold text-docker-dark mb-4">项目经历</h1>
+            <p class="text-xl text-docker-gray max-w-2xl mx-auto">展示个人技术作品和项目实践</p>
+            <div class="mt-6 text-docker-gray">
+                <span class="inline-flex items-center px-3 py-1 rounded-full bg-white border border-docker-border text-sm">
+                    <i class="fas fa-project-diagram mr-2 text-docker-blue"></i>
+                    共 3 个项目
+                </span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <article class="group bg-white rounded-lg border border-docker-border hover:shadow-lg hover:border-docker-blue/30 transition-all duration-300 flex flex-col h-full overflow-hidden">
+                    <div class="h-48 overflow-hidden border-b border-docker-border bg-docker-light relative">
+                        <img src="个人主页生成部署工具/zmd3.jpg" alt="个人主页生成部署工具" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-docker-blue/0 group-hover:bg-docker-blue/5 transition-colors duration-300"></div>
+                    </div>
+                    
+                    <div class="p-6 flex flex-col flex-grow">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-sm text-docker-gray bg-docker-light px-2 py-1 rounded border border-docker-border">
+                                <i class="far fa-calendar-alt mr-1"></i>2025-02
+                            </span>
+                        </div>
+
+                        <h2 class="text-xl font-bold text-docker-dark mb-3 group-hover:text-docker-blue transition-colors line-clamp-2">
+                            <a href="个人主页生成部署工具/content.html" class="hover:text-docker-blue">
+                                个人主页生成部署工具
+                            </a>
+                        </h2>
+                        
+                        <p class="text-docker-gray mb-6 line-clamp-3 flex-grow">
+                            基于静态站点生成（SSG）技术的个人主页解决方案，采用内容-模板-生成分离架构，支持通过JSON和Markdown自定义内容，使用Docker容器化部署，实现一键生成和部署个人主页。
+                        </p>
+
+                        <div class="pt-4 mt-auto border-t border-docker-border flex items-center justify-between">
+                            <a href="个人主页生成部署工具/content.html" class="inline-flex items-center text-docker-blue font-medium hover:underline group/link">
+                                查看详情
+                                <i class="fas fa-arrow-right ml-1 transform group-hover/link:translate-x-1 transition-transform"></i>
+                            </a>
+                            <div class="flex gap-3 text-docker-gray">
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="group bg-white rounded-lg border border-docker-border hover:shadow-lg hover:border-docker-blue/30 transition-all duration-300 flex flex-col h-full overflow-hidden">
+                    <div class="h-48 overflow-hidden border-b border-docker-border bg-docker-light relative">
+                        <img src="香烟销量预测/zmd.jpg" alt="香烟销量和销售额预测基于多模型集成学习方法" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-docker-blue/0 group-hover:bg-docker-blue/5 transition-colors duration-300"></div>
+                    </div>
+                    
+                    <div class="p-6 flex flex-col flex-grow">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-sm text-docker-gray bg-docker-light px-2 py-1 rounded border border-docker-border">
+                                <i class="far fa-calendar-alt mr-1"></i>2024-12
+                            </span>
+                        </div>
+
+                        <h2 class="text-xl font-bold text-docker-dark mb-3 group-hover:text-docker-blue transition-colors line-clamp-2">
+                            <a href="香烟销量预测/content.html" class="hover:text-docker-blue">
+                                香烟销量和销售额预测基于多模型集成学习方法
+                            </a>
+                        </h2>
+                        
+                        <p class="text-docker-gray mb-6 line-clamp-3 flex-grow">
+                            基于ARIMA、Prophet、LSTM、XGBoost多模型集成学习的销售预测项目，使用线性回归作为元学习器，显著提升预测精度。获钉钉杯数模比赛三等奖。
+                        </p>
+
+                        <div class="pt-4 mt-auto border-t border-docker-border flex items-center justify-between">
+                            <a href="香烟销量预测/content.html" class="inline-flex items-center text-docker-blue font-medium hover:underline group/link">
+                                查看详情
+                                <i class="fas fa-arrow-right ml-1 transform group-hover/link:translate-x-1 transition-transform"></i>
+                            </a>
+                            <div class="flex gap-3 text-docker-gray">
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="group bg-white rounded-lg border border-docker-border hover:shadow-lg hover:border-docker-blue/30 transition-all duration-300 flex flex-col h-full overflow-hidden">
+                    <div class="h-48 overflow-hidden border-b border-docker-border bg-docker-light relative">
+                        <img src="https://picsum.photos/seed/bert-nlp/800/500" alt="基于BERT预训练模型的文本语义相似度二分类任务" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-docker-blue/0 group-hover:bg-docker-blue/5 transition-colors duration-300"></div>
+                    </div>
+                    
+                    <div class="p-6 flex flex-col flex-grow">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-sm text-docker-gray bg-docker-light px-2 py-1 rounded border border-docker-border">
+                                <i class="far fa-calendar-alt mr-1"></i>2024-11
+                            </span>
+                        </div>
+
+                        <h2 class="text-xl font-bold text-docker-dark mb-3 group-hover:text-docker-blue transition-colors line-clamp-2">
+                            <a href="BERT文本语义相似度/content.html" class="hover:text-docker-blue">
+                                基于BERT预训练模型的文本语义相似度二分类任务
+                            </a>
+                        </h2>
+                        
+                        <p class="text-docker-gray mb-6 line-clamp-3 flex-grow">
+                            使用BERT预训练模型进行文本语义相似度判断，实现句子对二分类任务。基于Hugging Face生态完成从数据预处理到模型评估的全流程，训练集损失低至0.0925，验证集表现优异。
+                        </p>
+
+                        <div class="pt-4 mt-auto border-t border-docker-border flex items-center justify-between">
+                            <a href="BERT文本语义相似度/content.html" class="inline-flex items-center text-docker-blue font-medium hover:underline group/link">
+                                查看详情
+                                <i class="fas fa-arrow-right ml-1 transform group-hover/link:translate-x-1 transition-transform"></i>
+                            </a>
+                            <div class="flex gap-3 text-docker-gray">
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-docker-light border-t border-docker-border py-12 mt-auto">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="text-docker-gray text-sm">
+                    &copy; 2024 项目经历. All rights reserved.
+                </div>
+                <div class="flex gap-6">
+                    <a href="#" class="text-docker-gray hover:text-docker-blue transition-colors">
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                    <a href="#" class="text-docker-gray hover:text-docker-blue transition-colors">
+                        <i class="fab fa-twitter text-xl"></i>
+                    </a>
+                    <a href="#" class="text-docker-gray hover:text-docker-blue transition-colors">
+                        <i class="fab fa-linkedin text-xl"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

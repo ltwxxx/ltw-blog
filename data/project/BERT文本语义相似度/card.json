@@ -1,0 +1,10 @@
+{
+    "id": "bert-text-similarity",
+    "title": "基于BERT预训练模型的文本语义相似度二分类任务",
+    "summary": "使用BERT预训练模型进行文本语义相似度判断，实现句子对二分类任务。基于Hugging Face生态完成从数据预处理到模型评估的全流程，训练集损失低至0.0925，验证集表现优异。",
+    "technologies": ["Python", "BERT", "Hugging Face", "Transformers", "自然语言处理", "文本匹配", "深度学习", "迁移学习"],
+    "image": "https://picsum.photos/seed/bert-nlp/800/500",
+    "status": "completed",
+    "date": "2024-11",
+    "category": "自然语言处理"
+}

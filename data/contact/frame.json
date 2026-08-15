@@ -1,0 +1,13 @@
+{
+    "nav_title": "联系方式",
+    "page_title": "联系方式 - 梁庭威",
+    "nav_buttons": [
+        {
+            "text": "返回首页",
+            "href": "../home.html",
+            "icon": "fa-arrow-left",
+            "class": "back-btn"
+        }
+    ],
+    "footer_extra": "联系方式模块 - 欢迎与我联系"
+}

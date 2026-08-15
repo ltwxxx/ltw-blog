@@ -1,0 +1,188 @@
+<!-- 联系方式预览区域 -->
+<section id="contact" class="py-12 md:py-20 bg-docker-light border-t border-docker-border">
+    <div class="container mx-auto px-4 md:px-8 max-w-6xl">
+        <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold mb-3 md:mb-4 text-center reveal-element text-docker-dark" data-i18n-key="sections.contact.title">
+            {{ title }}
+        </h2>
+        <p class="text-docker-blue text-sm md:text-base text-center mb-8 md:mb-12 px-4 reveal-element" data-sr-delay="100" data-i18n-key="sections.contact.subtitle">
+            {{ subtitle }}
+        </p>
+
+        <!-- 联系方式卡片网格 -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 reveal-element" data-sr-delay="200">
+            {% for contact in contacts %}
+            <div class="contact-card bg-white rounded-lg border border-docker-border p-4 md:p-6 transition-all duration-300 hover:shadow-lg hover:border-docker-blue/30 touch-manipulation flex flex-col h-full">
+                <!-- 联系方式图标和类型 -->
+                <div class="flex items-center justify-center mb-4">
+                    <div class="w-12 h-12 md:w-14 md:h-14 rounded-lg bg-blue-50 flex items-center justify-center mr-3 shrink-0">
+                        <i class="{{ contact.icon }} text-xl md:text-2xl text-docker-blue"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-docker-dark">
+                            {{ contact.display_name }}
+                        </h3>
+                    </div>
+                </div>
+
+                <!-- 联系方式内容 -->
+                <div class="text-center flex-grow flex flex-col justify-center">
+                    {% if contact.type == 'email' %}
+                    <span class="text-docker-blue hover:text-docker-hover font-medium transition-colors cursor-pointer copy-contact"
+                          data-contact-value="{{ contact.value }}"
+                          data-contact-type="{{ contact.type }}"
+                          title="点击复制">
+                        {{ contact.value }}
+                    </span>
+                    {% elif contact.type in ['github', 'website', 'linkedin', 'twitter', 'weibo'] %}
+                    <a href="{{ contact.value }}"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="text-docker-blue hover:text-docker-hover font-medium transition-colors">
+                        {{ contact.value | truncate(25) }}
+                    </a>
+                    {% elif contact.type == 'phone' %}
+                    <span class="text-docker-blue hover:text-docker-hover font-medium transition-colors cursor-pointer copy-contact"
+                          data-contact-value="{{ contact.value }}"
+                          data-contact-type="{{ contact.type }}"
+                          title="点击复制">
+                        {{ contact.value }}
+                    </span>
+                    {% elif contact.type == 'wechat' or contact.type == 'qq' %}
+                    <span class="text-docker-gray font-medium select-all cursor-pointer copy-contact"
+                          data-contact-value="{{ contact.value }}"
+                          data-contact-type="{{ contact.type }}"
+                          title="点击复制">
+                        {{ contact.value }}
+                    </span>
+                    {% elif contact.type == 'douyin' %}
+                    {% if contact.value.endswith(('.png', '.jpg', '.jpeg', '.gif')) %}
+                    <div class="text-center">
+                        <img src="contact/{{ contact.value }}"
+                             alt="抖音二维码"
+                             class="w-24 h-24 mx-auto rounded-lg shadow-sm cursor-pointer hover:scale-110 transition-transform duration-300 border border-docker-border"
+                             loading="lazy"
+                             onclick="openImageModal('contact/{{ contact.value }}', '抖音二维码')">
+                        <p class="text-xs text-docker-gray mt-2 cursor-pointer hover:text-docker-blue transition-colors">点击放大二维码</p>
+                    </div>
+                    {% else %}
+                    <span class="text-docker-gray font-medium">{{ contact.value }}</span>
+                    {% endif %}
+                    {% else %}
+                    <span class="text-docker-gray font-medium">{{ contact.value }}</span>
+                    {% endif %}
+                </div>
+
+                <!-- 复制提示（对微信、QQ、电话、邮箱显示） -->
+                {% if contact.type == 'wechat' or contact.type == 'qq' or contact.type == 'phone' or contact.type == 'email' %}
+                <div class="mt-3 text-center">
+                    <span class="text-xs text-docker-gray/70 copy-hint">点击复制</span>
+                </div>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- 复制成功提示 -->
+<div id="copy-toast" class="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50 hidden">
+    <div class="bg-docker-dark text-white px-6 py-3 rounded-lg shadow-lg flex items-center space-x-2 animate-slide-up border border-docker-gray">
+        <i class="fa-solid fa-check-circle text-green-400"></i>
+        <span class="font-medium">已复制到剪贴板</span>
+    </div>
+</div>
+
+<script>
+    // 复制功能
+    document.addEventListener('DOMContentLoaded', function() {
+        const copyElements = document.querySelectorAll('.copy-contact');
+        
+        copyElements.forEach(element => {
+            element.addEventListener('click', function() {
+                const value = this.getAttribute('data-contact-value');
+                const type = this.getAttribute('data-contact-type');
+                
+                // 使用现代 Clipboard API
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(value).then(() => {
+                        showCopyToast();
+                        // 更新提示文字
+                        const hint = this.closest('.contact-card').querySelector('.copy-hint');
+                        if (hint) {
+                            const originalText = hint.textContent;
+                            hint.textContent = '✓ 已复制';
+                            hint.classList.add('text-green-600', 'font-semibold');
+                            setTimeout(() => {
+                                hint.textContent = originalText;
+                                hint.classList.remove('text-green-600', 'font-semibold');
+                            }, 2000);
+                        }
+                    }).catch(err => {
+                        console.error('复制失败:', err);
+                        fallbackCopy(value);
+                    });
+                } else {
+                    // 降级方案：使用传统方法
+                    fallbackCopy(value);
+                }
+            });
+        });
+    });
+    
+    // 降级复制方法
+    function fallbackCopy(text) {
+        const textArea = document.createElement('textarea');
+        textArea.value = text;
+        textArea.style.position = 'fixed';
+        textArea.style.left = '-999999px';
+        textArea.style.top = '-999999px';
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        
+        try {
+            const successful = document.execCommand('copy');
+            if (successful) {
+                showCopyToast();
+            } else {
+                alert('复制失败，请手动选择并复制');
+            }
+        } catch (err) {
+            console.error('复制失败:', err);
+            alert('复制失败，请手动选择并复制');
+        }
+        
+        document.body.removeChild(textArea);
+    }
+    
+    // 显示复制成功提示
+    function showCopyToast() {
+        const toast = document.getElementById('copy-toast');
+        if (toast) {
+            toast.classList.remove('hidden');
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 2000);
+        }
+    }
+</script>
+
+<style>
+    @keyframes slide-up {
+        from {
+            opacity: 0;
+            transform: translate(-50%, 20px);
+        }
+        to {
+            opacity: 1;
+            transform: translate(-50%, 0);
+        }
+    }
+    .animate-slide-up {
+        animation: slide-up 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+    .copy-contact:hover {
+        color: #005FB8;
+        transition: color 0.2s;
+    }
+</style>

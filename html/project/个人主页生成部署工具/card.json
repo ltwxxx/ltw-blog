@@ -1,0 +1,10 @@
+{
+    "id": "homepage-generator",
+    "title": "个人主页生成部署工具",
+    "summary": "基于静态站点生成（SSG）技术的个人主页解决方案，采用内容-模板-生成分离架构，支持通过JSON和Markdown自定义内容，使用Docker容器化部署，实现一键生成和部署个人主页。",
+    "technologies": ["Python", "Jinja2", "Docker", "Nginx", "Tailwind CSS", "Markdown", "静态站点生成", "自动化部署", "DevOps"],
+    "image": "zmd3.jpg",
+    "status": "completed",
+    "date": "2025-02",
+    "category": "Web开发"
+}

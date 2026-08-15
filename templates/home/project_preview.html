@@ -1,0 +1,53 @@
+<!-- 项目预览区域（Docker Hub 风格） -->
+<section id="project" class="py-20 md:py-28 bg-white border-t border-gray-100">
+    <div class="container mx-auto px-4 md:px-8 max-w-6xl">
+        <div class="max-w-4xl mx-auto mb-16 md:mb-24">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6 text-docker-dark reveal-element" data-i18n-key="sections.project.title">{{ title }}</h2>
+            <p class="text-xl text-gray-600 reveal-element" data-sr-delay="100">
+                Connect, collaborate, and create with my projects — a central repository for finding and sharing my work.
+            </p>
+            <a href="project/index.html" class="inline-flex items-center mt-6 text-docker-blue font-medium hover:underline transition-colors duration-200 cursor-pointer rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-docker-blue focus-visible:ring-offset-2 reveal-element" data-sr-delay="200">
+                Visit Projects Hub <i class="fa-solid fa-angle-right ml-2 text-sm" aria-hidden="true"></i>
+            </a>
+        </div>
+
+        <!-- 项目展示（截图风格） -->
+        <div class="reveal-element" data-sr-delay="300">
+            <!-- 桌面端展示一张大图或精选项目 -->
+             <div class="bg-docker-light rounded-xl border border-gray-200 shadow-sm overflow-hidden p-2 md:p-4">
+                 <div class="bg-white rounded-lg border border-gray-100 overflow-hidden">
+                     <!-- 模拟 Docker Hub 截图界面 -->
+                    <div class="flex border-b border-gray-100 bg-gray-50 px-4 py-2 items-center space-x-2">
+                        <div class="w-3 h-3 rounded-full bg-red-400"></div>
+                        <div class="w-3 h-3 rounded-full bg-yellow-400"></div>
+                        <div class="w-3 h-3 rounded-full bg-green-400"></div>
+                        <div class="ml-4 px-3 py-1 bg-white rounded text-xs text-gray-500 border border-gray-200 flex-1 text-center">
+                            projects / featured
+                        </div>
+                    </div>
+                    
+                    <div class="p-6 md:p-8">
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            {% for project in projects[:3] %}
+                            <a href="{{ project.link }}" class="group block border border-gray-200 rounded-lg p-5 hover:border-docker-blue hover:shadow-md transition-all bg-white cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-docker-blue focus-visible:ring-offset-2">
+                                <div class="flex items-start justify-between mb-4">
+                                    <div class="p-2 bg-blue-50 rounded text-docker-blue">
+                                        <i class="fa-solid fa-cube text-xl"></i>
+                                    </div>
+                                    <span class="text-xs font-mono text-gray-400">public</span>
+                                </div>
+                                <h3 class="text-lg font-bold text-docker-dark mb-2 group-hover:text-docker-blue transition-colors">{{ project.title }}</h3>
+                                <p class="text-gray-500 text-sm mb-4 line-clamp-2">{{ project.description }}</p>
+                                <div class="flex items-center text-xs text-gray-400 space-x-4">
+                                    <span class="flex items-center"><i class="fa-solid fa-code mr-1"></i> Python</span>
+                                    <span class="flex items-center"><i class="fa-regular fa-clock mr-1"></i> Updated</span>
+                                </div>
+                            </a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                 </div>
+             </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,10 @@
+{
+  "id": "blog-bug-report",
+  "title": "个人博客 Bug 与解决方案报告",
+  "date": "2025-02-10",
+  "image": "报告background.png",
+  "summary": "汇总本博客项目在开发与使用过程中遇到的各类问题及解决办法，包括环境与运行、链接与展示、脚本逻辑、路径配置等，便于日后查阅与排查。",
+  "category": "技术分享",
+  "tags": ["Bug 排查", "静态站点", "Docker", "gen.py", "部署", "Python"],
+  "status": "published"
+}

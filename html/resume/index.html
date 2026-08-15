@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="zh-CN" id="html-lang">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title data-i18n-key="site.title">个人简历 - 梁庭威</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="梁庭威的个人主页 - Python开发工程师，专注数据处理、机器学习与Python开发">
+    <meta name="keywords" content="Python开发,机器学习,个人简历,技术博客,数据处理">
+    <meta name="author" content="梁庭威">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourdomain.com">
+    <meta property="og:title" content="个人简历 - 梁庭威">
+    <meta property="og:description" content="梁庭威的个人主页 - Python开发工程师">
+    <meta property="og:image" content="https://yourdomain.com/og-image.jpg">
+    <meta property="og:locale" content="zh_CN">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://yourdomain.com">
+    <meta name="twitter:title" content="个人简历 - 梁庭威">
+    <meta name="twitter:description" content="梁庭威的个人主页 - Python开发工程师">
+    <meta name="twitter:image" content="https://yourdomain.com/og-image.jpg">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://yourdomain.com">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="/logo.jpg">
+    <link rel="apple-touch-icon" href="/logo.jpg">
+    
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "梁庭威",
+        "url": "https://yourdomain.com",
+        "jobTitle": "Python开发工程师",
+        "description": "专注数据处理、机器学习与Python开发",
+        "sameAs": []
+    }
+    </script>
+    <!-- 引入Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 引入Font Awesome图标 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- 引入ScrollReveal实现苹果风格滚动渐显动画 -->
+    <script src="https://unpkg.com/scrollreveal@4.0.9/dist/scrollreveal.min.js"></script>
+
+    <!-- 自定义Tailwind配置（Docker风格） -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        docker: {
+                            blue: '#006FE6',     // Docker Primary Blue
+                            dark: '#1D1D1F',     // Dark Text
+                            gray: '#575757',     // Secondary Text
+                            light: '#F5F6F7',    // Light Background
+                            border: '#E5E7EB',   // Border
+                            hover: '#005FB8',    // Blue Hover
+                            bg: '#FFFFFF'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif']
+                    },
+                    backgroundImage: {
+                        'dotted-pattern': 'radial-gradient(#D1D5DB 1px, transparent 1px)'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- 自定义样式 -->
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .bg-dotted {
+                background-image: radial-gradient(#E5E7EB 1px, transparent 1px);
+                background-size: 24px 24px;
+            }
+            .content-auto {
+                content-visibility: auto;
+            }
+            .scroll-smooth {
+                scroll-behavior: smooth;
+            }
+            @keyframes wave {
+                0%, 100% { transform: rotate(0deg); }
+                25% { transform: rotate(20deg); }
+                75% { transform: rotate(-15deg); }
+            }
+            .animate-wave {
+                animation: wave 1.5s infinite;
+            }
+            .clip-path-slant {
+                clip-path: polygon(0 0, 100% 4vw, 100% 100%, 0 100%);
+                padding-top: 8vw;
+                margin-top: -4vw;
+            }
+            /* UI/UX Pro Max: 焦点可见，便于键盘导航 */
+            a:focus-visible, button:focus-visible, [tabindex="0"]:focus-visible {
+                outline: none;
+                box-shadow: 0 0 0 2px #fff, 0 0 0 4px #006FE6;
+                border-radius: 4px;
+            }
+            /* 尊重用户“减少动画”偏好 */
+            @media (prefers-reduced-motion: reduce) {
+                *, *::before, *::after {
+                    animation-duration: 0.01ms !important;
+                    animation-iteration-count: 1 !important;
+                    transition-duration: 0.01ms !important;
+                }
+            }
+        }
+        
+        body {
+            @apply text-docker-dark antialiased bg-white;
+        }
+    </style>
+</head>
+
+<body class="font-sans text-docker-dark bg-white antialiased flex flex-col min-h-screen pl-[env(safe-area-inset-left)] pr-[env(safe-area-inset-right)]">
+    <!-- 导航栏 -->
+    <!-- 简历页面专用导航栏 (Docker Style) -->
+<nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200">
+    <div class="container mx-auto px-6 py-4">
+        <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2 group">
+                <div class="w-8 h-8 bg-[#006FE6] rounded flex items-center justify-center text-white font-bold group-hover:bg-blue-600 transition-colors">
+                    <i class="fa-solid fa-file-invoice"></i>
+                </div>
+                <h1 class="text-xl font-bold tracking-tight text-[#1D2D35] group-hover:text-[#006FE6] transition-colors">个人简历 - 梁庭威</h1>
+            </div>
+            
+            <div class="flex items-center gap-4">
+                <a href="../../data/resume/resume.pdf"
+download="resume.pdf"                   class="text-sm font-medium px-4 py-2 rounded-lg transition-colors flex items-center gap-2 text-[#8D9EA9] hover:text-[#006FE6] hover:bg-[#F0F6FF]">
+                    <i class="fa-solid fa-download"></i>
+                    下载简历
+                </a>
+                <a href="../home.html"
+                   class="text-sm font-medium px-4 py-2 rounded-lg transition-colors flex items-center gap-2 text-[#8D9EA9] hover:text-[#006FE6] hover:bg-[#F0F6FF]">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    返回首页
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+    <!-- 主要内容 -->
+    <!-- PDF预览区域 -->
+<section id="resume-preview" class="py-12 px-6 bg-dots min-h-[calc(100vh-200px)]">
+    <div class="container mx-auto max-w-5xl">
+        <div class="bg-white rounded-lg shadow-sm border border-[#E1E4E8] overflow-hidden">
+            <!-- PDF预览器头部 -->
+            <div class="p-4 md:p-6 border-b border-[#E1E4E8] flex justify-between items-center bg-[#F0F6FF]">
+                <h2 class="text-lg font-bold text-[#1D2D35] flex items-center gap-2">
+                    <i class="fa-solid fa-file-pdf text-[#006FE6]"></i>
+                    简历预览
+                </h2>
+                <div class="flex items-center gap-3">
+                    <span class="text-xs font-mono text-[#8D9EA9] bg-white px-2 py-1 rounded border border-[#E1E4E8] hidden md:block">
+                        PDF
+                    </span>
+                    <a href="./resume.pdf" download class="text-sm text-[#006FE6] hover:underline font-medium md:hidden">
+                        下载
+                    </a>
+                </div>
+            </div>
+
+            <!-- PDF嵌入 -->
+            <div class="bg-gray-50 p-1 md:p-4">
+                <embed src="./resume.pdf"
+                       type="application/pdf"
+                       width="100%"
+                       height="800"
+                       class="rounded border border-gray-200 bg-white shadow-sm w-full">
+                
+                <!-- 移动端提示 -->
+                <div class="md:hidden text-center py-8 px-4">
+                    <p class="text-gray-500 text-sm mb-4">您的设备可能不支持直接预览 PDF</p>
+                    <a href="./resume.pdf" class="inline-block bg-[#006FE6] text-white px-6 py-2 rounded-lg font-medium">
+                        下载简历查看
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 页面特定样式 -->
+<style>
+    .bg-dots {
+        background-image: radial-gradient(#E1E4E8 1px, transparent 1px);
+        background-size: 20px 20px;
+    }
+
+    /* 响应式PDF预览 */
+    @media (max-width: 768px) {
+        embed {
+            height: 500px;
+            display: none; /* 移动端隐藏 embed，使用下载链接 */
+        }
+        .md\:hidden {
+            display: block;
+        }
+    }
+    @media (min-width: 769px) {
+        .md\:hidden {
+            display: none;
+        }
+    }
+
+    /* 打印样式 */
+    @media print {
+        .container {
+            max-width: none !important;
+            padding: 0 !important;
+        }
+        nav, footer, .bg-dots {
+            display: none !important;
+        }
+        section {
+            padding: 0 !important;
+            background: white !important;
+        }
+        embed {
+            height: 100vh !important;
+            border: none !important;
+        }
+    }
+</style>
+
+    <!-- 页脚 -->
+    <!-- 页脚（Docker风格：深色、简洁） -->
+<footer class="py-12 bg-gray-50 border-t border-gray-200 text-gray-600">
+    <div class="container mx-auto px-4 md:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+            <!-- Brand -->
+            <div class="col-span-1 md:col-span-1">
+                <div class="flex items-center gap-2 mb-4">
+                    <img src="logo.jpg" alt="Logo" class="w-8 h-8 rounded-full">
+                    <span class="text-xl font-bold text-docker-dark">Portfolio</span>
+                </div>
+                <p class="text-sm text-gray-500 mb-4">
+                    记录学习，分享技术，探索未来。<br>
+                    Recording learning, sharing technology, exploring the future.
+                </p>
+                <div class="flex space-x-4">
+                    <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-docker-blue transition-colors duration-200 cursor-pointer rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-docker-blue focus-visible:ring-offset-2" aria-label="GitHub"><i class="fa-brands fa-github text-xl" aria-hidden="true"></i></a>
+                    <a href="mailto:your@email.com" class="text-gray-400 hover:text-docker-blue transition-colors duration-200 cursor-pointer rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-docker-blue focus-visible:ring-offset-2" aria-label="Email"><i class="fa-solid fa-envelope text-xl" aria-hidden="true"></i></a>
+                </div>
+            </div>
+            
+            <!-- Links Columns -->
+            <div>
+                <h4 class="font-bold text-docker-dark mb-4">Explore</h4>
+                <ul class="space-y-0 text-sm">
+                    <li><a href="../../home.html#blog" class="block py-2.5 hover:text-docker-blue transition-colors duration-200 cursor-pointer rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-docker-blue min-h-[44px] flex items-center">Blog</a></li>
+                    <li><a href="../../home.html#project" class="block py-2.5 hover:text-docker-blue transition-colors duration-200 cursor-pointer rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-docker-blue min-h-[44px] flex items-center">Projects</a></li>
+                    <li><a href="../../home.html#resume" class="block py-2.5 hover:text-docker-blue transition-colors duration-200 cursor-pointer rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-docker-blue min-h-[44px] flex items-center">Resume</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold text-docker-dark mb-4">Resources</h4>
+                <ul class="space-y-0 text-sm">
+                    <li><a href="../../home.html#docs" class="block py-2.5 hover:text-docker-blue transition-colors duration-200 cursor-pointer rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-docker-blue min-h-[44px] flex items-center">Documents</a></li>
+                    <li><a href="../../home.html#guestbook" class="block py-2.5 hover:text-docker-blue transition-colors duration-200 cursor-pointer rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-docker-blue min-h-[44px] flex items-center">Guestbook</a></li>
+                    <li><a href="../../home.html#stack" class="block py-2.5 hover:text-docker-blue transition-colors duration-200 cursor-pointer rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-docker-blue min-h-[44px] flex items-center">Tech Stack</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold text-docker-dark mb-4">Connect</h4>
+                <ul class="space-y-0 text-sm">
+                    <li><a href="../../home.html#contact" class="block py-2.5 hover:text-docker-blue transition-colors duration-200 cursor-pointer rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-docker-blue min-h-[44px] flex items-center">Contact Me</a></li>
+                    <li><a href="https://github.com" target="_blank" rel="noopener noreferrer" class="block py-2.5 hover:text-docker-blue transition-colors duration-200 cursor-pointer rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-docker-blue min-h-[44px] flex items-center">GitHub</a></li>
+                    <li><a href="mailto:your@email.com" class="block py-2.5 hover:text-docker-blue transition-colors duration-200 cursor-pointer rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-docker-blue min-h-[44px] flex items-center">Email</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="border-t border-gray-200 pt-8 flex flex-col md:flex-row justify-between items-center text-xs md:text-sm">
+            <p class="mb-2 md:mb-0 text-gray-500" data-i18n-key="footer.text">© 2025 梁庭威 | 个人博客</p>
+            <div class="flex items-center space-x-4">
+                <a href="https://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener noreferrer" class="text-gray-500 hover:text-docker-blue transition-colors duration-200 cursor-pointer rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-docker-blue">
+                    粤ICP备2025393362号-2
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <!-- 本地翻译方案（使用 i18n.json） -->
+    <script>
+        // ========== 语言切换功能 ==========
+        let currentLang = localStorage.getItem('preferred-language') || 'zh';
+        let i18nData = null;
+
+        // 加载语言数据
+        async function loadI18nData() {
+            try {
+                // 尝试多个可能的路径
+                const possiblePaths = [
+                    '/data/i18n.json',      // 绝对路径（nginx根目录）
+                    'data/i18n.json',       // 相对路径（当前目录）
+                    '../data/i18n.json'     // 相对路径（上一级）
+                ];
+                
+                let loaded = false;
+                for (const path of possiblePaths) {
+                    try {
+                        const response = await fetch(path);
+                        if (response.ok) {
+                            i18nData = await response.json();
+                            applyLanguage(currentLang);
+                            loaded = true;
+                            break;
+                        }
+                    } catch (e) {
+                        continue;
+                    }
+                }
+                
+                if (!loaded) {
+                    console.warn('无法加载语言数据，使用默认语言');
+                }
+            } catch (error) {
+                console.warn('无法加载语言数据，使用默认语言:', error);
+            }
+        }
+
+        // 获取翻译文本
+        function t(key, lang = currentLang, params = {}) {
+            if (!i18nData) return key;
+            const keys = key.split('.');
+            let value = i18nData[lang];
+            for (const k of keys) {
+                if (value && value[k]) {
+                    value = value[k];
+                } else {
+                    return key;
+                }
+            }
+            // 替换占位符
+            if (typeof value === 'string' && params) {
+                Object.keys(params).forEach(param => {
+                    value = value.replace(`{${param}}`, params[param]);
+                });
+            }
+            return value;
+        }
+
+        // 应用语言
+        function applyLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('preferred-language', lang);
+            
+            // 更新html lang属性
+            const htmlElement = document.documentElement;
+            htmlElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+            
+            // 更新页面标题（如果有翻译）
+            const titleElement = document.querySelector('title[data-i18n-key]');
+            if (titleElement) {
+                const titleKey = titleElement.getAttribute('data-i18n-key');
+                const titleText = t(titleKey, lang);
+                if (titleText && titleText !== titleKey) {
+                    document.title = titleText;
+                    titleElement.textContent = titleText;
+                }
+            }
+            
+            // 更新所有带有 data-i18n-key 的元素
+            document.querySelectorAll('[data-i18n-key]').forEach(element => {
+                const key = element.getAttribute('data-i18n-key');
+                // 检查是否有参数
+                const paramsAttr = element.getAttribute('data-i18n-params');
+                let params = {};
+                if (paramsAttr) {
+                    try {
+                        params = JSON.parse(paramsAttr);
+                    } catch (e) {
+                        // 如果解析失败，尝试从data属性获取
+                        const count = element.getAttribute('data-count');
+                        if (count) params = { count: count };
+                    }
+                }
+                const text = t(key, lang, params);
+                if (text && text !== key) {
+                    element.textContent = text;
+                }
+            });
+            
+            // 更新所有带有 data-i18n-placeholder 的输入框
+            document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
+                const key = element.getAttribute('data-i18n-placeholder');
+                const text = t(key, lang);
+                if (text && text !== key) {
+                    element.placeholder = text;
+                }
+            });
+            
+            // 更新桌面端语言按钮文字与下拉选中态
+            const langLabel = document.getElementById('lang-toggle-label');
+            if (langLabel) langLabel.textContent = lang === 'zh' ? '中文' : 'EN';
+            document.querySelectorAll('.lang-option').forEach(btn => {
+                const isActive = btn.getAttribute('data-lang') === lang;
+                const check = btn.querySelector('.lang-check');
+                if (isActive) {
+                    btn.classList.add('bg-docker-blue', 'text-white');
+                    btn.classList.remove('hover:bg-docker-light', 'hover:text-docker-blue', 'text-gray-700');
+                    if (check) check.classList.remove('opacity-0');
+                } else {
+                    btn.classList.remove('bg-docker-blue', 'text-white');
+                    btn.classList.add('hover:bg-docker-light', 'hover:text-docker-blue', 'text-gray-700');
+                    if (check) check.classList.add('opacity-0');
+                }
+            });
+            // 更新移动端语言按钮选中态
+            document.querySelectorAll('.lang-option-mobile').forEach(btn => {
+                if (btn.getAttribute('data-lang') === lang) {
+                    btn.classList.add('bg-docker-blue', 'text-white', 'border-docker-blue');
+                    btn.classList.remove('border-gray-200');
+                } else {
+                    btn.classList.remove('bg-docker-blue', 'text-white', 'border-docker-blue');
+                    btn.classList.add('border-gray-200');
+                }
+            });
+        }
+
+        // 语言切换事件
+        function initLanguageToggle() {
+            const langToggle = document.getElementById('lang-toggle');
+            const langMenu = document.getElementById('lang-menu');
+            const chevron = document.querySelector('.lang-chevron');
+
+            function setMenuOpen(open) {
+                if (!langMenu || !langToggle) return;
+                langMenu.classList.toggle('hidden', !open);
+                langToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+                if (chevron) chevron.style.transform = open ? 'rotate(180deg)' : '';
+            }
+
+            // 同步当前语言到按钮与下拉（首次加载）
+            applyLanguage(currentLang);
+
+            if (langToggle && langMenu) {
+                langToggle.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const isHidden = langMenu.classList.contains('hidden');
+                    setMenuOpen(isHidden);
+                });
+
+                document.addEventListener('click', (e) => {
+                    if (!langToggle.contains(e.target) && !langMenu.contains(e.target)) {
+                        setMenuOpen(false);
+                    }
+                });
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape' && !langMenu.classList.contains('hidden')) {
+                        setMenuOpen(false);
+                    }
+                });
+            }
+
+            document.querySelectorAll('.lang-option').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const lang = btn.getAttribute('data-lang');
+                    applyLanguage(lang);
+                    setMenuOpen(false);
+                });
+            });
+
+            document.querySelectorAll('.lang-option-mobile').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const lang = btn.getAttribute('data-lang');
+                    applyLanguage(lang);
+                });
+            });
+        }
+
+        // 页面加载时初始化语言
+        document.addEventListener('DOMContentLoaded', () => {
+            loadI18nData().then(() => {
+                initLanguageToggle();
+            });
+        });
+
+        // ========== 导航栏滚动磨砂效果 ==========
+        const nav = document.getElementById('main-nav');
+        if (nav) {
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    nav.classList.add('nav-scrolled');
+                } else {
+                    nav.classList.remove('nav-scrolled');
+                }
+            });
+        }
+
+        // 2. 移动端菜单切换（展开时锁定背景滚动）
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (menuBtn && mobileMenu) {
+            menuBtn.addEventListener('click', () => {
+                const isOpening = mobileMenu.classList.contains('hidden');
+                mobileMenu.classList.toggle('hidden');
+                document.body.style.overflow = isOpening ? 'hidden' : '';
+                if (document.documentElement && document.documentElement.style) {
+                    document.documentElement.style.overflow = isOpening ? 'hidden' : '';
+                }
+                const icon = menuBtn.querySelector('i');
+                if (icon) {
+                    if (icon.classList.contains('fa-bars')) {
+                        icon.classList.replace('fa-bars', 'fa-xmark');
+                    } else {
+                        icon.classList.replace('fa-xmark', 'fa-bars');
+                    }
+                }
+            });
+        }
+
+        // 3. 平滑滚动（关闭移动端菜单 + 锚点跳转）
+        const navLinks = document.querySelectorAll('nav a[href^="#"]');
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                const href = link.getAttribute('href');
+                // 如果是锚点链接（以#开头且不是#）
+                if (href && href.startsWith('#') && href !== '#') {
+                    e.preventDefault();
+                    const targetId = href.substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    
+                    if (targetElement) {
+                        // 获取导航栏高度（约80px，包括padding）
+                        const navHeight = 80;
+                        const targetPosition = targetElement.offsetTop - navHeight;
+                        
+                        // 平滑滚动到目标位置
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+                
+                // 关闭移动端菜单并恢复滚动
+                if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                    document.body.style.overflow = '';
+                    if (document.documentElement && document.documentElement.style) {
+                        document.documentElement.style.overflow = '';
+                    }
+                    if (menuBtn) {
+                        const icon = menuBtn.querySelector('i');
+                        if (icon) icon.classList.replace('fa-xmark', 'fa-bars');
+                    }
+                }
+            });
+        });
+
+        // 4. 苹果风格滚动渐显动画配置
+        ScrollReveal({
+            origin: 'bottom',
+            distance: '20px',
+            duration: 800,
+            easing: 'cubic-bezier(0.25, 0.8, 0.25, 1)',
+            reset: false,
+            viewFactor: 0.1
+        });
+        // 初始化所有带reveal-element类的元素
+        ScrollReveal().reveal('.reveal-element');
+
+        // 5. 搜索功能
+        let searchData = [];
+        let searchTimeout = null;
+
+        // 加载搜索数据
+        async function loadSearchData() {
+            try {
+                // 尝试多个可能的路径
+                const possiblePaths = [
+                    '/search-data.json',  // 绝对路径（nginx根目录）
+                    'search-data.json',   // 相对路径（当前目录）
+                    '../search-data.json' // 相对路径（上一级）
+                ];
+                
+                let loaded = false;
+                for (const path of possiblePaths) {
+                    try {
+                        const response = await fetch(path);
+                        if (response.ok) {
+                            searchData = await response.json();
+                            console.log(`搜索数据加载成功（${path}），共 ${searchData.length} 条记录`);
+                            loaded = true;
+                            break;
+                        }
+                    } catch (e) {
+                        // 继续尝试下一个路径
+                        continue;
+                    }
+                }
+                
+                if (!loaded) {
+                    console.error('搜索数据加载失败：所有路径尝试均失败');
+                }
+            } catch (error) {
+                console.error('搜索数据加载失败：', error);
+            }
+        }
+
+        // 执行搜索
+        function performSearch(query) {
+            if (!query || query.trim() === '') {
+                return [];
+            }
+
+            if (searchData.length === 0) {
+                console.warn('搜索数据未加载，请稍后再试');
+                return [];
+            }
+
+            const lowerQuery = query.toLowerCase().trim();
+            const results = [];
+
+            searchData.forEach(item => {
+                const title = (item.title || '').toLowerCase();
+                const summary = (item.summary || '').toLowerCase();
+                const tags = (item.tags || []).join(' ').toLowerCase();
+                const technologies = (item.technologies || []).join(' ').toLowerCase();
+                const category = (item.category || '').toLowerCase();
+
+                const searchText = `${title} ${summary} ${tags} ${technologies} ${category}`;
+                
+                if (searchText.includes(lowerQuery)) {
+                    results.push({
+                        ...item,
+                        relevance: calculateRelevance(item, lowerQuery)
+                    });
+                }
+            });
+
+            // 按相关性排序
+            results.sort((a, b) => b.relevance - a.relevance);
+            return results.slice(0, 10); // 最多显示10个结果
+        }
+
+        // 计算相关性分数
+        function calculateRelevance(item, query) {
+            let score = 0;
+            const title = (item.title || '').toLowerCase();
+            const summary = (item.summary || '').toLowerCase();
+            const tags = (item.tags || []).join(' ').toLowerCase();
+            const technologies = (item.technologies || []).join(' ').toLowerCase();
+
+            // 标题匹配权重最高
+            if (title.includes(query)) score += 10;
+            // 标签匹配
+            if (tags.includes(query)) score += 5;
+            // 技术栈匹配
+            if (technologies.includes(query)) score += 3;
+            // 摘要匹配
+            if (summary.includes(query)) score += 1;
+
+            return score;
+        }
+
+        // 渲染搜索结果
+        function renderSearchResults(results, containerId) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+
+            if (results.length === 0) {
+                container.innerHTML = '<p class="text-gray-500 text-center py-4">未找到相关结果</p>';
+                container.classList.remove('hidden');
+                return;
+            }
+
+            let html = '<div class="space-y-2">';
+            results.forEach(result => {
+                const type = result.type === 'blog' ? '博客' : '项目';
+                const icon = result.type === 'blog' ? 'fa-book' : 'fa-folder';
+                const url = result.url || '#';
+                
+                html += `
+                    <a href="${url}" class="block p-3 rounded-lg hover:bg-gray-50 transition-colors border border-gray-100">
+                        <div class="flex items-start space-x-3">
+                            <i class="fa-solid ${icon} text-apple-hover mt-1"></i>
+                            <div class="flex-1 min-w-0">
+                                <div class="flex items-center space-x-2 mb-1">
+                                    <span class="text-xs text-gray-500 bg-gray-100 px-2 py-0.5 rounded">${type}</span>
+                                    ${result.category ? `<span class="text-xs text-gray-400">${result.category}</span>` : ''}
+                                </div>
+                                <h4 class="font-semibold text-apple-black truncate">${result.title}</h4>
+                                ${result.summary ? `<p class="text-sm text-gray-600 line-clamp-2 mt-1">${result.summary}</p>` : ''}
+                            </div>
+                        </div>
+                    </a>
+                `;
+            });
+            html += '</div>';
+            
+            container.innerHTML = html;
+            container.classList.remove('hidden');
+        }
+
+        // 初始化搜索功能
+        function initSearch() {
+            loadSearchData();
+
+            // 桌面端与移动端共用同一套搜索 UI
+            const searchBtn = document.getElementById('search-btn');
+            const searchContainer = document.getElementById('search-container');
+            const searchInput = document.getElementById('search-input');
+            const searchResults = document.getElementById('search-results');
+            const mobileSearchBtn = document.getElementById('mobile-search-btn');
+
+            // 桌面端搜索按钮点击
+            if (searchBtn && searchContainer) {
+                searchBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    searchContainer.classList.toggle('hidden');
+                    if (!searchContainer.classList.contains('hidden')) {
+                        searchInput.focus();
+                    }
+                });
+            }
+
+            // 移动端搜索按钮点击：复用同一 search-container 与 search-input
+            if (mobileSearchBtn && searchContainer && searchInput) {
+                mobileSearchBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    searchContainer.classList.toggle('hidden');
+                    if (!searchContainer.classList.contains('hidden')) {
+                        searchInput.focus();
+                    }
+                });
+            }
+
+            // 搜索输入处理（桌面端与移动端共用，结果渲染到 search-results）
+            if (searchInput && searchResults) {
+                searchInput.addEventListener('input', (e) => {
+                    clearTimeout(searchTimeout);
+                    const query = e.target.value;
+
+                    if (query.trim() === '') {
+                        searchResults.classList.add('hidden');
+                        return;
+                    }
+
+                    searchTimeout = setTimeout(() => {
+                        const results = performSearch(query);
+                        console.log(`搜索 "${query}" 找到 ${results.length} 个结果`);
+                        renderSearchResults(results, 'search-results');
+                    }, 300);
+                });
+            }
+
+            // 点击外部关闭搜索框（任一搜索按钮点击不关）
+            document.addEventListener('click', (e) => {
+                if (!searchContainer) return;
+                if (searchContainer.contains(e.target)) return;
+                if (searchBtn && searchBtn.contains(e.target)) return;
+                if (mobileSearchBtn && mobileSearchBtn.contains(e.target)) return;
+                searchContainer.classList.add('hidden');
+            });
+        }
+
+        // 页面加载完成后初始化搜索
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initSearch);
+        } else {
+            initSearch();
+        }
+
+        // 图片放大模态框功能（苹果风格）
+        function openImageModal(imageSrc, imageAlt) {
+            // 创建模态框HTML
+            const modalHTML = `
+                <div id="image-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-80 backdrop-blur-md transition-opacity duration-300" 
+                     onclick="closeImageModal(event)">
+                    <div class="relative max-w-4xl max-h-[90vh] mx-4 animate-scale-in" onclick="event.stopPropagation()">
+                        <!-- 关闭按钮 -->
+                        <button onclick="closeImageModal(event)" 
+                                class="absolute -top-12 right-0 w-10 h-10 rounded-full bg-white bg-opacity-20 backdrop-blur-sm text-white hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center hover:scale-110">
+                            <i class="fa-solid fa-times text-lg"></i>
+                        </button>
+                        <!-- 图片容器 -->
+                        <div class="bg-white rounded-3xl p-4 md:p-6 shadow-2xl">
+                            <img src="${imageSrc}" 
+                                 alt="${imageAlt || '图片'}"
+                                 class="max-w-full max-h-[80vh] rounded-2xl object-contain">
+                            ${imageAlt ? `<p class="text-apple-black text-center mt-4 text-lg font-medium">${imageAlt}</p>` : ''}
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            // 添加到body
+            document.body.insertAdjacentHTML('beforeend', modalHTML);
+            
+            // 添加动画样式
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes scale-in {
+                    from {
+                        opacity: 0;
+                        transform: scale(0.9) translateY(20px);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: scale(1) translateY(0);
+                    }
+                }
+                .animate-scale-in {
+                    animation: scale-in 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+                }
+                #image-modal {
+                    cursor: pointer;
+                }
+                #image-modal > div {
+                    cursor: default;
+                }
+            `;
+            if (!document.getElementById('image-modal-style')) {
+                style.id = 'image-modal-style';
+                document.head.appendChild(style);
+            }
+            
+            // 禁止背景滚动
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeImageModal(event) {
+            if (event) {
+                event.stopPropagation();
+            }
+            const modal = document.getElementById('image-modal');
+            if (modal) {
+                modal.style.opacity = '0';
+                setTimeout(() => {
+                    modal.remove();
+                    document.body.style.overflow = '';
+                }, 300);
+            }
+        }
+        
+        // 支持ESC键关闭
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeImageModal();
+            }
+        });
+    </script>
+</body>
+</html>

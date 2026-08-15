@@ -1,0 +1,13 @@
+{
+    "nav_title": "留言板",
+    "page_title": "留言板 - 梁庭威",
+    "nav_buttons": [
+        {
+            "text": "返回首页",
+            "href": "../home.html",
+            "icon": "fa-arrow-left",
+            "class": "back-btn"
+        }
+    ],
+    "footer_extra": "留言板 - 欢迎留下您的想法和建议"
+}

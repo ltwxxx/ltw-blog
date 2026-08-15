@@ -1,0 +1,77 @@
+<!-- 简历预览区域 -->
+<section id="resume" class="py-12 md:py-24 pt-16 md:pt-24 bg-docker-light relative overflow-hidden">
+    <div class="absolute inset-0 bg-dotted-pattern bg-[length:20px_20px] opacity-30"></div>
+    <div class="container mx-auto px-4 md:px-8 max-w-6xl relative z-10">
+        <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold mb-3 md:mb-4 text-center reveal-element text-docker-dark" data-i18n-key="sections.resume.title">
+            {{ title }}
+        </h2>
+        <p class="text-docker-gray text-sm md:text-base text-center mb-8 md:mb-12 px-4 reveal-element" data-sr-delay="100" data-i18n-key="sections.resume.subtitle">
+            {{ subtitle }}
+        </p>
+
+        <!-- 核心信息卡片网格 -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-12 lg:gap-16 mb-8 md:mb-16">
+            <!-- 教育背景 -->
+            <div class="bg-white rounded-lg border border-docker-border p-6 md:p-12 lg:p-16 transition-all duration-300 hover:shadow-lg hover:border-docker-blue/30 reveal-element">
+                <div class="text-docker-blue mb-4">
+                    <i class="fa-solid fa-graduation-cap text-3xl"></i>
+                </div>
+                <h3 class="text-lg font-semibold mb-3 text-docker-dark" data-i18n-key="sections.resume.education">教育背景</h3>
+                <p class="text-docker-gray text-base leading-relaxed" data-i18n-key="sections.resume.education_content">{{ education }}</p>
+            </div>
+
+            <!-- 技术栈 -->
+            <div class="bg-white rounded-lg border border-docker-border p-6 md:p-12 lg:p-16 transition-all duration-300 hover:shadow-lg hover:border-docker-blue/30 reveal-element" data-sr-delay="100">
+                <div class="text-docker-blue mb-3 md:mb-4">
+                    <i class="fa-solid fa-code text-2xl md:text-3xl"></i>
+                </div>
+                <h3 class="text-base md:text-lg font-semibold mb-2 md:mb-3 text-docker-dark" data-i18n-key="sections.resume.stack">技术栈</h3>
+                <p class="text-docker-gray text-sm md:text-base leading-relaxed" data-i18n-key="sections.resume.stack_content">{{ stack }}</p>
+            </div>
+
+            <!-- 求职意向 -->
+            <div class="bg-white rounded-lg border border-docker-border p-6 md:p-12 lg:p-16 transition-all duration-300 hover:shadow-lg hover:border-docker-blue/30 reveal-element md:col-span-2 lg:col-span-1" data-sr-delay="200">
+                <div class="text-docker-blue mb-3 md:mb-4">
+                    <i class="fa-solid fa-briefcase text-2xl md:text-3xl"></i>
+                </div>
+                <h3 class="text-base md:text-lg font-semibold mb-2 md:mb-3 text-docker-dark" data-i18n-key="sections.resume.expectation">求职意向</h3>
+                <p class="text-docker-gray text-sm md:text-base leading-relaxed" data-i18n-key="sections.resume.expectation_content">{{ expectation }}</p>
+            </div>
+        </div>
+
+        <!-- 代表项目 -->
+        <div class="mb-8 md:mb-16">
+            <h3 class="text-xl md:text-2xl font-semibold mb-6 md:mb-8 text-center reveal-element text-docker-dark" data-sr-delay="300" data-i18n-key="sections.resume.projects">代表项目</h3>
+            {% if projects|length == 1 %}
+            <!-- 单个项目：居中全宽 -->
+            <div class="flex justify-center">
+                <div class="bg-white rounded-lg border border-docker-border p-6 md:p-12 lg:p-16 transition-all duration-300 hover:shadow-lg hover:border-docker-blue/30 reveal-element w-full" data-sr-delay="400">
+                    <div class="text-docker-blue mb-3 md:mb-4">
+                        <i class="fa-solid fa-project-diagram text-xl md:text-2xl"></i>
+                    </div>
+                    <p class="text-docker-gray text-sm md:text-base leading-relaxed" data-i18n-key="sections.resume.project_1">{{ projects[0] }}</p>
+                </div>
+            </div>
+            {% else %}
+            <!-- 多个项目：网格布局 -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 lg:gap-12">
+                {% for project in projects %}
+                <div class="bg-white rounded-lg border border-docker-border p-6 md:p-12 lg:p-16 transition-all duration-300 hover:shadow-lg hover:border-docker-blue/30 reveal-element h-full" data-sr-delay="{{ loop.index * 100 + 400 }}">
+                    <div class="text-docker-blue mb-3 md:mb-4">
+                        <i class="fa-solid fa-project-diagram text-xl md:text-2xl"></i>
+                    </div>
+                    <p class="text-docker-gray text-sm md:text-base leading-relaxed" data-i18n-key="sections.resume.project_{{ loop.index }}">{{ project }}</p>
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+
+        <!-- 查看完整简历按钮 -->
+        <div class="text-center reveal-element" data-sr-delay="600">
+            <a href="{{ resume_url }}" class="inline-block bg-docker-blue text-white px-6 py-2.5 md:px-8 md:py-3 rounded-md text-base md:text-lg hover:bg-docker-hover active:bg-blue-700 transition-all transform hover:translate-y-[-2px] shadow-md hover:shadow-lg touch-manipulation">
+                <span data-i18n-key="sections.resume.button">{{ resume_button_text }}</span> <i class="fa-solid fa-arrow-right ml-2 text-sm md:text-base"></i>
+            </a>
+        </div>
+    </div>
+</section>

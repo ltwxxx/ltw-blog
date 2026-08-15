@@ -1,0 +1,10 @@
+{
+    "id": "time-series-prediction",
+    "title": "时间序列预测在销售数据分析中的应用",
+    "date": "2025-01-17",
+    "summary": "分享时间序列预测实践经验，从数据预处理、ARIMA/LSTM/Prophet/XGBoost模型到集成学习，结合项目案例深入探讨销售预测技术...",
+    "image": "./时间序列插图.png",
+    "category": "经济与金融",
+    "tags": ["时间序列预测", "机器学习", "销售预测", "集成学习", "Python"],
+    "status": "published"
+}

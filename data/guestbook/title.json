@@ -1,0 +1,11 @@
+{
+    "title": "留言板",
+    "subtitle": "欢迎留下您的想法、建议或问题，我会尽快回复",
+    "placeholder_name": "请输入您的姓名",
+    "placeholder_email": "请输入您的邮箱（可选）",
+    "placeholder_message": "请输入您的留言内容...",
+    "submit_button": "提交留言",
+    "submitting": "提交中...",
+    "success_message": "留言提交成功！感谢您的反馈。",
+    "error_message": "留言提交失败，请稍后重试。"
+}

@@ -1,0 +1,36 @@
+<!-- 通用卡片组件模板（Docker风格） -->
+<div class="card group card-hover bg-white rounded-lg overflow-hidden reveal-element cursor-pointer border border-gray-200 shadow-sm hover:shadow-md transition-all duration-200"
+     data-sr-delay="0">
+
+    <!-- 图片区域（可选） -->
+    <div class="relative overflow-hidden h-48 bg-gray-100 border-b border-gray-100">
+        <img src="https://picsum.photos/seed/bert-reflection/800/500"
+             alt="BERT项目从理论到实践的NLP学习之路"
+             class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+             loading="lazy">
+
+        <!-- 类型标识（统一主题色） -->
+        <span class="absolute top-3 left-3 bg-docker-blue text-white text-xs px-2 py-1 rounded font-medium shadow-sm" data-i18n-key="nav.blog">
+            <i class="fa-solid fa-book-open mr-1" aria-hidden="true"></i>Blog
+        </span>
+    </div>
+
+    <a href="" class="block p-5 flex flex-col h-full relative rounded-b-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-docker-blue focus-visible:ring-inset">
+        <span class="text-gray-400 text-xs font-mono mb-2 block">2024-11-25</span>
+        
+        <h3 class="text-lg font-bold mb-3 text-docker-dark group-hover:text-docker-blue transition-colors leading-tight">
+            BERT项目从理论到实践的NLP学习之路
+        </h3>
+        
+        <p class="text-gray-600 text-sm leading-relaxed mb-4 flex-grow line-clamp-3">
+                分享完成BERT文本语义相似度项目的心得体会，从理论学习到工程实践，从问题解决到能力提升，记录NLP学习路上的成长与思考。
+        </p>
+        
+        <div class="mt-auto pt-4 border-t border-gray-50 flex items-center justify-between text-sm">
+            <span class="text-docker-blue font-medium group-hover:underline">
+                Read more
+            </span>
+            <i class="fa-solid fa-arrow-right text-docker-blue transform group-hover:translate-x-1 transition-transform"></i>
+        </div>
+    </a>
+</div>

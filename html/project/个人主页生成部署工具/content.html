@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="zh-CN" id="html-lang">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人主页生成部署工具 - 梁庭威 | 个人博客</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="基于静态站点生成（SSG）技术的个人主页解决方案，采用内容-模板-生成分离架构，支持通过JSON和Markdown自定义内容，使用Docker容器化部署，实现一键生成和部署个人主页。">
+    <meta name="keywords" content="Python开发,技术博客">
+    <meta name="author" content="梁庭威">
+    <meta name="robots" content="index, follow">
+    <meta name="article:published_time" content="2025-02">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="个人主页生成部署工具">
+    <meta property="og:description" content="基于静态站点生成（SSG）技术的个人主页解决方案，采用内容-模板-生成分离架构，支持通过JSON和Markdown自定义内容，使用Docker容器化部署，实现一键生成和部署个人主页。">
+    <meta property="og:image" content="https://yourdomain.com/./zmd3.jpg">
+    <meta property="og:url" content="https://yourdomain.com/project/个人主页生成部署工具/content.html">
+    <meta property="og:locale" content="zh_CN">
+    <meta property="article:published_time" content="2025-02">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="个人主页生成部署工具">
+    <meta name="twitter:description" content="基于静态站点生成（SSG）技术的个人主页解决方案，采用内容-模板-生成分离架构，支持通过JSON和Markdown自定义内容，使用Docker容器化部署，实现一键生成和部署个人主页。">
+    <meta name="twitter:image" content="https://yourdomain.com/./zmd3.jpg">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://yourdomain.com/project/个人主页生成部署工具/content.html">
+    
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "个人主页生成部署工具",
+        "description": "基于静态站点生成（SSG）技术的个人主页解决方案，采用内容-模板-生成分离架构，支持通过JSON和Markdown自定义内容，使用Docker容器化部署，实现一键生成和部署个人主页。",
+        "author": {
+            "@type": "Person",
+            "name": "梁庭威"
+        },
+        "datePublished": "2025-02",
+        "dateModified": "2025-02",
+        "image": "https://yourdomain.com/./zmd3.jpg",
+        "publisher": {
+            "@type": "Person",
+            "name": "梁庭威"
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://yourdomain.com/project/个人主页生成部署工具/content.html"
+        }
+    }
+    </script>
+    <!-- 引入Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 引入Font Awesome图标 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- 引入ScrollReveal实现滚动渐显动画 -->
+    <script src="https://unpkg.com/scrollreveal@4.0.9/dist/scrollreveal.min.js"></script>
+
+    <!-- Docker 风格配置 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        docker: {
+                            blue: '#006FE6',
+                            darkBlue: '#092953',
+                            lightBlue: '#F0F6FF',
+                            bg: '#ffffff',
+                            text: '#1D2D35',
+                            gray: '#8D9EA9',
+                            border: '#E1E4E8'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'Roboto', 'system-ui', 'sans-serif'],
+                        mono: ['Monaco', 'Menlo', 'Consolas', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- 自定义样式 -->
+    <style type="text/tailwindcss">
+        /* 文章内容样式 */
+        .article-content {
+            line-height: 1.8;
+            color: #1D2D35;
+        }
+        .article-content h1 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            margin: 2.5rem 0 1.5rem 0;
+            color: #1D2D35;
+            letter-spacing: -0.025em;
+        }
+        .article-content h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin: 2rem 0 1rem 0;
+            color: #1D2D35;
+            letter-spacing: -0.025em;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #E1E4E8;
+        }
+        .article-content h3 {
+            font-size: 1.35rem;
+            font-weight: 600;
+            margin: 1.5rem 0 0.75rem 0;
+            color: #1D2D35;
+        }
+        .article-content p {
+            margin: 1.25rem 0;
+            color: #374151;
+        }
+        .article-content ul, .article-content ol {
+            margin: 1.25rem 0;
+            padding-left: 1.5rem;
+        }
+        .article-content ul {
+            list-style-type: disc;
+        }
+        .article-content ol {
+            list-style-type: decimal;
+        }
+        .article-content li {
+            margin: 0.5rem 0;
+            color: #374151;
+        }
+        .article-content code {
+            background: #F0F6FF;
+            color: #006FE6;
+            padding: 0.2rem 0.4rem;
+            border-radius: 0.25rem;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 0.9em;
+        }
+        .article-content pre {
+            background: #092953;
+            color: #f8f8f2;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            border: 1px solid #E1E4E8;
+        }
+        .article-content pre code {
+            background: transparent;
+            color: inherit;
+            padding: 0;
+            font-size: 0.9em;
+        }
+        .article-content blockquote {
+            border-left: 4px solid #006FE6;
+            background: #F0F6FF;
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            color: #1D2D35;
+            font-style: italic;
+            border-radius: 0 0.5rem 0.5rem 0;
+        }
+        .article-content img {
+            border-radius: 0.5rem;
+            margin: 2rem auto;
+            display: block;
+            max-width: min(100%, 560px);
+            height: auto;
+            border: 1px solid #E1E4E8;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        .article-content a {
+            color: #006FE6;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+        .article-content a:hover {
+            color: #0051B8;
+        }
+    </style>
+</head>
+<body class="font-sans bg-white text-docker-text antialiased">
+    <!-- 导航栏 -->
+    <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-docker-border">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="../../home.html" class="flex items-center gap-2 group text-docker-gray hover:text-docker-blue transition-colors">
+                    <i class="fa-solid fa-home"></i>
+                    <span class="font-medium">首页</span>
+                </a>
+
+                <div class="flex items-center space-x-4">
+                    <a href="../index.html" class="flex items-center gap-2 text-docker-gray hover:text-docker-blue transition-colors">
+                        <i class="fa-solid fa-arrow-left"></i>
+                        <span data-i18n-key="common.view_all_projects">所有项目</span>
+                    </a>
+                    <div class="hidden md:flex items-center text-sm text-docker-gray pl-4 border-l border-gray-200">
+                        <span class="bg-docker-lightBlue text-docker-blue px-2 py-1 rounded text-xs font-bold uppercase mr-2">Web开发</span>
+                        <span>2025-02</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 文章容器 -->
+    <article class="container mx-auto px-6 py-12 max-w-4xl">
+
+        <!-- 文章头部 -->
+        <header class="mb-12 text-center">
+            <div class="flex flex-wrap items-center justify-center gap-2 mb-6">
+                <span class="bg-docker-lightBlue text-docker-blue px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide">
+                    Web开发
+                </span>
+                <span class="text-docker-gray text-sm">
+                    <i class="far fa-calendar-alt mr-1"></i>
+                    2025-02
+                </span>
+            </div>
+            
+            <h1 class="text-3xl md:text-5xl font-bold text-docker-darkBlue mb-6 leading-tight tracking-tight">
+                个人主页生成部署工具
+            </h1>
+            
+        </header>
+
+        <!-- 文章封面图 -->
+        <div class="mt-8 mb-12 rounded-xl overflow-hidden shadow-sm border border-docker-border">
+            <img src="./zmd3.jpg" 
+                 alt="个人主页生成部署工具"
+                 class="w-full h-auto object-cover max-h-[500px]">
+        </div>
+
+        <!-- 文章内容 -->
+        <div class="article-content max-w-none">
+            <h1 id="_1">个人主页生成部署工具</h1>
+<h2 id="_2">项目概述</h2>
+<p>个人主页生成部署工具是一个基于静态站点生成（SSG）技术的个人展示网站解决方案。项目采用内容-模板-生成分离的架构设计，参考苹果公司官网风格，提供简洁、科技感强的个人主页。通过自定义JSON和Markdown文件实现内容自定义，通过Docker实现部署，迁移成本极低，可以便捷地部署自己的个人主页。</p>
+<p><strong>项目时间</strong>：2025年2月</p>
+<p><strong>项目角色</strong>：全栈开发者</p>
+<p><strong>项目状态</strong>：已完成并持续优化</p>
+<h2 id="_3">项目背景</h2>
+<p>在互联网时代，个人主页是展示个人能力、项目经历和技术栈的重要平台。然而，传统的个人主页开发存在以下问题：</p>
+<ul>
+<li><strong>开发成本高</strong>：需要掌握前端、后端、部署等多种技术</li>
+<li><strong>维护困难</strong>：内容更新需要修改代码，学习成本高</li>
+<li><strong>部署复杂</strong>：需要配置服务器、数据库等复杂环境</li>
+<li><strong>迁移困难</strong>：更换服务器需要重新配置环境</li>
+</ul>
+<p>为了解决这些问题，我开发了这个个人主页生成部署工具，旨在提供一个简单、高效、易维护的个人主页解决方案。</p>
+<h2 id="_4">核心特性</h2>
+<h3 id="1-">1. 内容-模板-生成分离架构</h3>
+<p>项目采用三层分离架构，实现了内容与样式的完全解耦：</p>
+<p><strong>数据层（data/）</strong>
+- JSON格式存储结构化配置（导航栏、卡片信息等）
+- Markdown格式存储文章和项目详情
+- 支持图片、PDF等静态资源
+- 内容修改无需接触代码</p>
+<p><strong>模板层（templates/）</strong>
+- Jinja2模板引擎，支持继承和组件复用
+- 模块化设计，便于维护和扩展
+- 参考苹果官网风格，现代化UI设计</p>
+<p><strong>生成层（scripts/）</strong>
+- Python脚本负责数据读取和模板渲染
+- 统一的生成入口，支持模块化生成
+- 自动清理和同步机制</p>
+<p><strong>输出层（html/）</strong>
+- 生成纯静态HTML文件
+- 无需服务器端动态处理
+- 可直接部署到CDN</p>
+<h3 id="2">2. 模块化设计</h3>
+<p>项目支持多个功能模块，每个模块可独立生成和更新：</p>
+<ul>
+<li><strong>首页（home）</strong>：个人介绍、技能展示</li>
+<li><strong>简历（resume）</strong>：完整的个人简历页面</li>
+<li><strong>博客（blog）</strong>：技术文章、学习笔记</li>
+<li><strong>项目（project）</strong>：项目展示和详情</li>
+<li><strong>文档（docs）</strong>：文档下载和管理</li>
+<li><strong>技术栈（stack）</strong>：技术能力展示</li>
+<li><strong>联系方式（contact）</strong>：联系信息展示</li>
+</ul>
+<h3 id="3-docker">3. Docker容器化部署</h3>
+<p><strong>多阶段构建优化</strong>
+- 第一阶段：使用Python镜像生成静态文件
+- 第二阶段：使用Nginx Alpine镜像提供服务
+- 最终镜像体积小，启动快</p>
+<p><strong>一键部署</strong>
+- 本地更新脚本，自动上传代码
+- 服务器端更新脚本，自动重启服务
+- 完整的错误处理和日志输出</p>
+<h3 id="4">4. 性能优化</h3>
+<p><strong>Nginx配置优化</strong>
+- Gzip压缩，减少传输数据量
+- 静态资源长期缓存（1年）
+- 安全响应头配置</p>
+<p><strong>前端优化</strong>
+- Tailwind CSS CDN引入，无需构建
+- ScrollReveal滚动动画，提升用户体验
+- 响应式设计，完美适配各种设备</p>
+<h2 id="_5">技术架构</h2>
+<h3 id="_6">技术栈</h3>
+<p><strong>后端生成系统</strong>
+- Python 3.9：核心生成脚本
+- Jinja2：模板渲染引擎
+- Markdown：内容格式支持</p>
+<p><strong>前端技术</strong>
+- Tailwind CSS：现代化UI框架
+- ScrollReveal：滚动动画库
+- Font Awesome：图标库</p>
+<p><strong>部署技术</strong>
+- Docker：容器化部署
+- Nginx：Web服务器
+- Docker Compose：容器编排</p>
+<h3 id="_7">项目结构</h3>
+<div class="codehilite"><pre><span></span><code>homepage3/
+├── data/              # 数据层：JSON和Markdown文件
+│   ├── blog/          # 博客内容
+│   ├── project/       # 项目内容
+│   ├── resume/        # 简历内容
+│   └── ...
+├── templates/         # 模板层：Jinja2模板
+│   ├── base.html      # 基础模板
+│   ├── components/    # 组件模板
+│   └── ...
+├── scripts/           # 生成层：Python生成脚本
+│   ├── home/         # 首页生成
+│   ├── sections/      # 各模块生成
+│   └── ...
+├── html/              # 输出层：生成的HTML文件
+├── gen.py             # 统一生成入口
+├── Dockerfile         # Docker构建文件
+├── docker-compose.yml # Docker编排文件
+└── nginx.conf         # Nginx配置文件
+</code></pre></div>
+
+<h2 id="_8">核心功能实现</h2>
+<h3 id="1">1. 内容管理</h3>
+<p><strong>JSON配置管理</strong>
+- 统一的字段规范（参考CARD_FIELDS_GUIDE）
+- 支持嵌套结构，灵活表达复杂数据
+- 易于修改和维护</p>
+<p><strong>Markdown内容编写</strong>
+- 标准Markdown语法
+- 支持图片、链接等丰富内容
+- 便于版本控制</p>
+<h3 id="2_1">2. 模板渲染</h3>
+<p><strong>Jinja2模板引擎</strong>
+- 模板继承：base.html作为基础模板
+- 组件复用：include引入公共组件
+- 过滤器：处理数据格式</p>
+<p><strong>模块化生成</strong>
+- 每个模块有独立的生成脚本
+- 支持单独更新某个模块
+- 统一的生成入口管理</p>
+<h3 id="3">3. 自动化部署</h3>
+<p><strong>本地更新脚本（local_update.sh）</strong>
+- SSH密钥免密登录
+- 自动上传代码到服务器
+- 远程执行更新脚本
+- 完整的错误处理</p>
+<p><strong>服务器端更新脚本</strong>
+- 自动执行生成命令
+- 重启Docker容器
+- 日志记录和错误处理</p>
+<h3 id="4-docker">4. Docker部署</h3>
+<p><strong>多阶段构建</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="c"># 第一阶段：生成静态文件</span>
+<span class="k">FROM</span><span class="w"> </span><span class="s">python:3.9-slim</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="s">builder</span>
+<span class="c"># 安装依赖并生成HTML</span>
+
+<span class="c"># 第二阶段：使用Nginx提供服务</span>
+<span class="k">FROM</span><span class="w"> </span><span class="s">nginx:alpine</span>
+<span class="c"># 复制生成的静态文件</span>
+</code></pre></div>
+
+<p><strong>Docker Compose配置</strong>
+- 端口映射：8081:83
+- 健康检查：自动检测服务状态
+- 自动重启：服务异常时自动重启</p>
+<h2 id="_9">使用指南</h2>
+<h3 id="1_1">1. 内容修改</h3>
+<p><strong>修改博客内容</strong>
+1. 在<code>data/blog/分类目录/文章目录/</code>下创建或修改文件
+2. 编辑<code>card.json</code>设置文章信息
+3. 编辑<code>content.md</code>编写文章内容
+4. 运行<code>python gen.py blog</code>生成博客页面</p>
+<p><strong>修改项目内容</strong>
+1. 在<code>data/project/项目目录/</code>下创建或修改文件
+2. 编辑<code>card.json</code>设置项目信息
+3. 编辑<code>content.md</code>编写项目详情
+4. 运行<code>python gen.py project</code>生成项目页面</p>
+<h3 id="2_2">2. 本地生成</h3>
+<div class="codehilite"><pre><span></span><code><span class="c1"># 生成所有页面</span>
+python<span class="w"> </span>gen.py<span class="w"> </span>all
+
+<span class="c1"># 生成指定模块</span>
+python<span class="w"> </span>gen.py<span class="w"> </span>blog
+python<span class="w"> </span>gen.py<span class="w"> </span>project
+python<span class="w"> </span>gen.py<span class="w"> </span>resume
+</code></pre></div>
+
+<h3 id="3_1">3. 本地部署</h3>
+<div class="codehilite"><pre><span></span><code><span class="c1"># 构建Docker镜像</span>
+docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>homepage<span class="w"> </span>.
+
+<span class="c1"># 启动容器</span>
+docker-compose<span class="w"> </span>up<span class="w"> </span>-d
+
+<span class="c1"># 访问 http://localhost:8081</span>
+</code></pre></div>
+
+<h3 id="4_1">4. 服务器部署</h3>
+<div class="codehilite"><pre><span></span><code><span class="c1"># 修改local_update.sh中的配置</span>
+<span class="c1"># 执行更新脚本</span>
+bash<span class="w"> </span>local_update.sh
+</code></pre></div>
+
+<h2 id="_10">项目亮点</h2>
+<h3 id="1_2">1. 架构设计</h3>
+<ul>
+<li><strong>分离关注点</strong>：内容、样式、逻辑完全分离</li>
+<li><strong>模块化设计</strong>：各模块独立，便于维护和扩展</li>
+<li><strong>可扩展性</strong>：易于添加新功能模块</li>
+</ul>
+<h3 id="2_3">2. 开发体验</h3>
+<ul>
+<li><strong>内容驱动</strong>：只需修改JSON和Markdown即可更新内容</li>
+<li><strong>自动化流程</strong>：一键生成和部署</li>
+<li><strong>错误处理</strong>：完善的错误提示和日志记录</li>
+</ul>
+<h3 id="3_2">3. 性能优化</h3>
+<ul>
+<li><strong>静态站点</strong>：无需服务器端处理，加载速度快</li>
+<li><strong>Docker优化</strong>：多阶段构建，镜像体积小</li>
+<li><strong>Nginx优化</strong>：Gzip压缩、缓存策略</li>
+</ul>
+<h3 id="4_2">4. 部署便利性</h3>
+<ul>
+<li><strong>容器化部署</strong>：一次构建，到处运行</li>
+<li><strong>自动化部署</strong>：一键上传和更新</li>
+<li><strong>迁移成本低</strong>：可在任何支持Docker的环境中部署</li>
+</ul>
+<h2 id="_11">技术难点与解决方案</h2>
+<h3 id="1_3">1. 模板继承与组件复用</h3>
+<p><strong>挑战</strong>：如何在多个页面中复用相同的组件</p>
+<p><strong>解决方案</strong>：
+- 使用Jinja2的模板继承机制
+- 定义base.html作为基础模板
+- 使用include引入公共组件</p>
+<h3 id="2_4">2. 数据与模板的绑定</h3>
+<p><strong>挑战</strong>：如何将JSON/Markdown数据灵活地绑定到模板</p>
+<p><strong>解决方案</strong>：
+- 统一的配置加载函数
+- 数据预处理，转换为模板友好的格式
+- 使用Jinja2的过滤器处理数据格式</p>
+<h3 id="3_3">3. 静态资源管理</h3>
+<p><strong>挑战</strong>：如何处理图片、PDF等静态资源</p>
+<p><strong>解决方案</strong>：
+- 资源文件与内容文件放在同一目录
+- 使用相对路径引用资源
+- 生成时自动复制资源文件到输出目录</p>
+<h3 id="4_3">4. 多模块依赖管理</h3>
+<p><strong>挑战</strong>：不同模块之间存在依赖关系，如何管理生成顺序</p>
+<p><strong>解决方案</strong>：
+- 定义清晰的模块依赖关系
+- 使用统一的生成入口（gen.py）
+- 按依赖顺序执行生成任务</p>
+<h2 id="_12">项目成果</h2>
+<h3 id="_13">功能实现</h3>
+<ul>
+<li>✅ 完整的内容管理系统</li>
+<li>✅ 模块化生成系统</li>
+<li>✅ Docker容器化部署</li>
+<li>✅ 自动化部署流程</li>
+<li>✅ 性能优化配置</li>
+<li>✅ 响应式UI设计</li>
+</ul>
+<h3 id="_14">技术收获</h3>
+<ul>
+<li>深入理解静态站点生成技术</li>
+<li>掌握Docker多阶段构建优化</li>
+<li>学会Nginx性能调优</li>
+<li>提升Python脚本开发能力</li>
+<li>增强系统架构设计能力</li>
+</ul>
+<h2 id="_15">未来规划</h2>
+<h3 id="_16">功能扩展</h3>
+<ol>
+<li><strong>CI/CD集成</strong>：集成GitHub Actions，实现自动构建和部署</li>
+<li><strong>内容管理界面</strong>：开发Web界面，支持可视化内容编辑</li>
+<li><strong>主题系统</strong>：支持多主题切换，提高项目的通用性</li>
+<li><strong>SEO优化</strong>：增强SEO功能，提升搜索引擎排名</li>
+<li><strong>性能监控</strong>：集成性能监控工具，实时了解网站性能</li>
+</ol>
+<h3 id="_17">技术优化</h3>
+<ol>
+<li><strong>构建优化</strong>：优化生成脚本性能，支持增量生成</li>
+<li><strong>缓存策略</strong>：实现更智能的缓存机制</li>
+<li><strong>错误处理</strong>：增强错误处理和恢复机制</li>
+<li><strong>文档完善</strong>：编写更详细的使用文档和API文档</li>
+</ol>
+<h2 id="_18">总结</h2>
+<p>个人主页生成部署工具是一个综合性的全栈项目，展示了我在Python全栈开发、系统架构设计、DevOps工程化等多个技术领域的综合能力。项目采用的内容-模板-生成分离架构，使得内容更新变得简单高效。Docker容器化部署使得项目迁移成本极低，可以在任何支持Docker的环境中快速部署。</p>
+<p>通过这个项目，我不仅掌握了静态站点生成的核心技术，更重要的是学会了如何设计一个可维护、可扩展、高性能的系统架构。项目已经成功部署并运行，为我的个人主页提供了稳定可靠的技术支持。</p>
+<p>未来，我将继续优化和完善这个项目，使其成为一个更加通用、易用的个人主页解决方案。</p>
+        </div>
+
+        <!-- 文章底部 -->
+        <div class="mt-16 pt-8 border-t border-docker-border">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                <div class="text-docker-gray text-sm">
+                    <i class="fa-solid fa-user mr-2"></i>
+                    作者：梁庭威
+                </div>
+                
+                <div class="flex gap-2">
+                    <button onclick="window.print()" class="text-docker-gray hover:text-docker-blue transition-colors p-2" title="打印文章">
+                        <i class="fa-solid fa-print text-lg"></i>
+                    </button>
+                    <button onclick="navigator.share({title: document.title, url: window.location.href})" class="text-docker-gray hover:text-docker-blue transition-colors p-2" title="分享文章">
+                        <i class="fa-solid fa-share-nodes text-lg"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </article>
+
+    <!-- 页脚 -->
+    <footer class="bg-gray-50 border-t border-docker-border py-12 px-6 mt-12">
+        <div class="container mx-auto text-center">
+            <p class="text-docker-gray text-sm">
+                &copy; 2025 梁庭威. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // 简单的阅读进度条
+        const progressBar = document.createElement('div');
+        progressBar.className = 'fixed top-0 left-0 h-1 bg-docker-blue z-[60] transition-all duration-100';
+        progressBar.style.width = '0%';
+        document.body.appendChild(progressBar);
+
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            progressBar.style.width = scrolled + '%';
+        });
+    </script>
+</body>
+</html>

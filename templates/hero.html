@@ -1,0 +1,72 @@
+<!-- Hero区域（Docker风格：简洁、左对齐、点阵背景） -->
+<section id="home" class="py-16 md:py-32 lg:py-48 bg-white bg-dotted relative overflow-hidden flex items-center">
+    <!-- 装饰性光晕 -->
+    <div class="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 md:w-96 md:h-96 bg-blue-50 rounded-full blur-3xl opacity-50 pointer-events-none"></div>
+    <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-48 h-48 md:w-80 md:h-80 bg-blue-50 rounded-full blur-3xl opacity-50 pointer-events-none"></div>
+
+    <!-- 底部斜线分割 -->
+    <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-[0] z-20">
+        <svg class="relative block w-[calc(100%+1.3px)] h-[40px] md:h-[80px] lg:h-[120px] text-docker-light" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M0,120L1200,0L1200,120Z" fill="currentColor"></path>
+        </svg>
+    </div>
+
+    <div class="container mx-auto px-4 md:px-8 max-w-6xl relative z-10 pb-8 md:pb-16 lg:pb-20">
+        <div class="flex flex-col-reverse md:flex-row items-center justify-between gap-8 md:gap-12">
+            <!-- 左侧内容 -->
+            <div class="w-full md:w-3/5 text-center md:text-left mt-8 md:mt-0">
+                <h1 class="text-3xl min-[375px]:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-2 md:mb-4 tracking-tight text-docker-dark reveal-element relative pb-4 w-full">
+                    <span id="hero-title-text" class="relative z-10 block w-full leading-[1.2]">
+                        <span class="block" data-i18n-key="hero.title_line1">{{ hero_title_line1 }}</span>{% if hero_title_line2 %}<span class="block" data-i18n-key="hero.title_line2">{{ hero_title_line2 }}</span>{% endif %}
+                    </span>
+                    <!-- 波浪线装饰（仅桌面端显示，移动端不显示） -->
+                    <svg id="hero-wave" class="absolute bottom-2 left-0 w-full h-4 text-docker-blue opacity-30 z-0 hidden md:block" viewBox="0 0 100 10" preserveAspectRatio="none">
+                        <path d="M0 5 Q 50 10 100 5" stroke="currentColor" stroke-width="8" fill="none" />
+                    </svg>
+                </h1>
+                
+                <script>
+                    (function() {
+                        var wave = document.getElementById('hero-wave');
+                        if (!wave) return;
+                        function adjustWave() {
+                            if (window.innerWidth >= 768) {
+                                var title = document.getElementById('hero-title-text');
+                                if (title) {
+                                    var rects = title.getClientRects();
+                                    if (rects.length > 0) {
+                                        wave.style.width = Math.round(rects[rects.length - 1].width * 0.72) + 'px';
+                                    }
+                                }
+                            }
+                        }
+                        window.addEventListener('load', adjustWave);
+                        window.addEventListener('resize', adjustWave);
+                        adjustWave();
+                    })();
+                </script>
+                <p class="text-lg md:text-2xl text-gray-600 mb-8 md:mb-12 max-w-2xl leading-relaxed reveal-element mt-2 md:mt-4 mx-auto md:mx-0" data-sr-delay="200">
+                    <span class="inline-block animate-wave origin-bottom-right mr-2">👋</span>
+                    <span data-i18n-key="hero.subtitle">{{ hero_subtitle }}</span>
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-3 md:gap-4 reveal-element justify-center md:justify-start" data-sr-delay="400">
+                    <a href="{{ hero_button_link }}" class="inline-flex justify-center items-center min-h-[44px] px-6 py-3 md:px-8 md:py-3.5 bg-docker-blue text-white rounded font-medium hover:bg-docker-hover transition-all duration-200 transform hover:-translate-y-0.5 shadow-sm hover:shadow-md text-sm md:text-base w-full sm:w-auto cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-docker-blue focus-visible:ring-offset-2">
+                        <span data-i18n-key="hero.button">{{ hero_button_text }}</span>
+                    </a>
+                    <a href="#project" class="inline-flex justify-center items-center min-h-[44px] px-6 py-3 md:px-8 md:py-3.5 bg-white text-docker-dark border border-gray-200 rounded font-medium hover:bg-gray-50 transition-all duration-200 transform hover:-translate-y-0.5 shadow-sm hover:shadow-md text-sm md:text-base w-full sm:w-auto cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-docker-blue focus-visible:ring-offset-2">
+                        Download CV / Resume
+                    </a>
+                </div>
+            </div>
+            
+            <!-- 右侧头像 -->
+            <div class="w-full md:w-2/5 flex justify-center md:justify-end reveal-element" data-sr-delay="200">
+                <div class="relative w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-96 lg:h-96">
+                    <div class="absolute inset-0 bg-blue-100 rounded-full opacity-20 blur-2xl transform translate-x-4 translate-y-4"></div>
+                    <img src="logo.jpg" alt="Profile" class="relative w-full h-full rounded-full shadow-2xl object-cover border-[6px] border-white z-10 hover:scale-105 transition-transform duration-300">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

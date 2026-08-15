@@ -1,0 +1,12 @@
+{
+  "title": "个人简历",
+  "subtitle": "",
+  "education": "湛江科技学院 · 数字媒体技术 · 本科（2022-2026）",
+  "projects": [
+    "香烟销量和销售额预测基于多模型集成学习方法 · 基于ARIMA、Prophet、LSTM、XGBoost的销售预测项目"
+  ],
+  "stack": "Python · 数据处理 · 机器学习 · 深度学习 · 时间序列预测 · 集成学习",
+  "expectation": "Python开发工程师 | 数据处理工程师 | 机器学习工程师",
+  "resume_url": "resume/index.html",
+  "resume_button_text": "查看完整简历"
+}

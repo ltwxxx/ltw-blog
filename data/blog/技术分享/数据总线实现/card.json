@@ -1,0 +1,10 @@
+{
+    "id": "data-processing-practice",
+    "title": "数据标注到模型预测",
+    "date": "2025-01-15",
+    "summary": "分享数据处理实践经验，从数据预处理、系统资源管理到网络数据传输，结合项目案例深入探讨数据处理的核心技能...",
+    "image": "zmd-luoxi.png",
+    "category": "技术分享",
+    "tags": ["数据处理", "数据预处理", "Python", "机器学习", "数据科学"],
+    "status": "published"
+}

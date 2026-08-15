@@ -1,0 +1,13 @@
+{
+    "nav_title": "技术栈",
+    "page_title": "技术栈 - 梁庭威",
+    "nav_buttons": [
+        {
+            "text": "返回首页",
+            "href": "../home.html",
+            "icon": "fa-arrow-left",
+            "class": "back-btn"
+        }
+    ],
+    "footer_extra": "技术栈模块 - 展示个人技术能力"
+}
